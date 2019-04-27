@@ -4,35 +4,15 @@ import { color, shadow } from "src/theme";
 
 type Props = { open: boolean; bg: string };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ open: boolean }>`
   position: relative;
   cursor: pointer;
   z-index: 3;
-`;
-
-const Shape = styled.div<Props>`
   position: relative;
-  background: ${props => color(props.bg)};
+  background: transparent;
   box-shadow: ${shadow(1)};
   width: 46px;
   height: 46px;
-  border-radius: 50%;
-  transition: all 400ms ease-out 400ms;
-  ${props =>
-    props.open &&
-    css`
-      transition-delay: 0ms;
-    `}
-`;
-
-const ShapeOverlay = styled.div<Props>`
-  position: absolute;
-  background: ${props => color(props.bg)};
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(${props => (props.open ? 1 : 0)});
   border-radius: 50%;
   transition: all 400ms ease-out 400ms;
 `;
@@ -57,7 +37,7 @@ const First = styled(Line)<Props>`
   top: 0px;
   background: ${props => color(props.bg)};
   transform-origin: 0% 0%;
-  transition: all 400ms ease-out 400ms;
+  transition: all 400ms ease-out 800ms;
   transform: scaleX(1) translateX(0px);
   ${props =>
     props.open &&
@@ -71,7 +51,7 @@ const Second = styled(Line)`
   top: 5px;
   background: ${props => color(props.bg)};
   transform-origin: 100% 100%;
-  transition: all 400ms ease-out 400ms;
+  transition: all 400ms ease-out 800ms;
   transform: scaleX(1) translateX(0);
   ${props =>
     props.open &&
@@ -127,10 +107,7 @@ export const MenuButton: React.SFC<ButtonProps> = ({
   bg,
   fg,
 }) => (
-  <Wrapper onClick={toggleMenu}>
-    <Shape open={open} bg={bg}>
-      <ShapeOverlay open={open} bg={fg} />
-    </Shape>
+  <Wrapper open={open} onClick={toggleMenu}>
     <Lines>
       <First bg={fg} open={open} />
       <Second bg={fg} open={open} />

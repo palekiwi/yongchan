@@ -16,13 +16,20 @@ const Shape = styled(animated.div)<BG>`
   transform-origin: 50% 50%;
   background: ${props => color(props.bg)};
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0px;
+  right: 0px;
   height: 46px;
   transform: scale(1);
   width: 46px;
   border-radius: 50%;
+  z-index: 1;
+`;
+
+const ShapeOverlay = styled(Shape)<BG>`
   z-index: 2;
+  top: 0px;
+  right: 0px;
+  transform: scale(0);
 `;
 
 const MenuWrapper = styled(animated.div)`
@@ -42,7 +49,6 @@ const Content = styled(animated.div)`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  opacity: 0;
 `;
 
 const Overlay = styled(animated.div)<BG>`
@@ -66,37 +72,31 @@ export const ExpandingCircle: React.SFC<Props> = ({
   fg,
   children,
 }) => {
-  const transRef = useRef();
-  const springRef = useRef();
   const transitions = useTransition(open, null, {
-    from: { opacity: 0, sc: 1 },
-    enter: { opacity: 1, sc: window.innerWidth / 48 },
-    leave: { opacity: 0, sc: 1 },
-    ref: transRef,
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
   });
-  const spring = useSpring({
-    color: open ? "green" : "red",
-    opacity: open ? 1 : 0,
-    ref: springRef,
+  const so = useSpring({
+    transform: open ? "scale(1)" : "scale(0)",
+    delay: 400,
   });
-  useChain(open ? [transRef, springRef] : [springRef, transRef], [0.4, 0.8]);
+  const sh = useSpring({
+    transform: open ? `scale(${window.innerWidth / 46})` : "scale(1)",
+    delay: open ? 400 : 0,
+  });
   return (
     <div>
       <ButtonWrapper>
         <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
+        <ShapeOverlay bg={fg} style={so} />
+        <Shape bg={bg} style={sh} />
       </ButtonWrapper>
       {transitions.map(
         ({ item, key, props }) =>
           item && (
             <MenuWrapper key={key}>
-              <Overlay bg={bg} style={{ opacity: props.opacity }} />
-              <Shape
-                bg={bg}
-                style={{
-                  transform: props.sc.interpolate(x => `scale(${x})`),
-                }}
-              />
-              <Content style={spring}>{children}</Content>
+              <Content>{children}</Content>
             </MenuWrapper>
           )
       )}
