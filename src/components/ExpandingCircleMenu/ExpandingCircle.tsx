@@ -1,8 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
+import { color } from "src/theme";
 import { MenuButton } from "src/components/MenuButton";
+import { animated, useTransition } from "react-spring";
 
-type Open = { open: boolean };
+type BG = { bg: string };
 
 const ButtonWrapper = styled.div`
   position: absolute;
@@ -10,33 +12,43 @@ const ButtonWrapper = styled.div`
   right: 10px;
 `;
 
-const Shape = styled.div<{ open: boolean }>`
+const Shape = styled(animated.div)<BG>`
+  transform-origin: 50% 50%;
+  background: ${props => color(props.bg)};
   position: absolute;
   top: 10px;
   right: 10px;
   height: 46px;
+  transform: scale(1);
   width: 46px;
   border-radius: 50%;
   z-index: 2;
 `;
 
-const MenuWrapper = styled.div<Open>`
-  position: absolute;
+const MenuWrapper = styled(animated.div)`
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  transform: scale(${props => (props.open ? 1 : 0)});
+  transform: scale(1);
   overflow: hidden;
 `;
 
-const Content = styled(Box)`
+const Content = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
   z-index: 2;
+`;
+
+const Overlay = styled(animated.div)<BG>`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: ${props => color(props.bg)};
 `;
 
 interface Props {
@@ -46,51 +58,38 @@ interface Props {
   fg: string;
 }
 
-interface State {
-  animating: boolean;
-}
-
-export class ExpandingCircle extends React.Component<Props, State> {
-  state: State = { animating: false };
-
-  componentDidUpdate(pp: Props, ps: State) {
-    if (pp.open !== this.props.open) this.setState({ animating: true });
-  }
-
-  onRest = () => {
-    this.setState({ animating: false });
-  };
-
-  render() {
-    const { open, toggleMenu, bg, fg } = this.props;
-    return (
-      <Box>
-        <ButtonWrapper>
-          <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
-        </ButtonWrapper>
-        <MenuWrapper open={this.state.animating || this.props.open}>
-          <Motion
-            defaultStyle={{ x: 0, opacity: 0 }}
-            style={{
-              x: spring(open ? 20 : 0),
-              opacity: spring(open ? 1 : 0),
-            }}
-            onRest={this.onRest}
-          >
-            {styles => (
-              <>
-                <Box width={1} bg={bg} style={{ opacity: styles.opacity }} />
-                <Shape
-                  style={{ transform: `scale(${styles.x})` }}
-                  open={open}
-                  bg={bg}
-                />
-              </>
-            )}
-          </Motion>
-          <Content>{this.props.children}</Content>
-        </MenuWrapper>
-      </Box>
-    );
-  }
-}
+export const ExpandingCircle: React.SFC<Props> = ({
+  open,
+  toggleMenu,
+  bg,
+  fg,
+  children,
+}) => {
+  const transitions = useTransition(open, null, {
+    from: { opacity: 0, sc: 1 },
+    enter: { opacity: 1, sc: window.innerWidth / 48 },
+    leave: { opacity: 0, sc: 1 },
+  });
+  return (
+    <div>
+      <ButtonWrapper>
+        <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
+      </ButtonWrapper>
+      {transitions.map(
+        ({ item, key, props }) =>
+          item && (
+            <MenuWrapper key={key}>
+              <Overlay bg={bg} style={{ opacity: props.opacity }} />
+              <Shape
+                bg={bg}
+                style={{
+                  transform: props.sc.interpolate(x => `scale(${x})`),
+                }}
+              />
+              <Content>{children}</Content>
+            </MenuWrapper>
+          )
+      )}
+    </div>
+  );
+};
