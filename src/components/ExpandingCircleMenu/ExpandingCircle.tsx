@@ -6,8 +6,9 @@ import { animated, useTransition, useChain, useSpring } from "react-spring";
 
 type BG = { bg: string };
 
-const ButtonWrapper = styled.div`
-  position: absolute;
+const Wrapper = styled.div`
+  z-index: 0;
+  position: fixed;
   top: 10px;
   right: 10px;
 `;
@@ -22,13 +23,11 @@ const Shape = styled(animated.div)<BG>`
   transform: scale(1);
   width: 46px;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 0;
 `;
 
 const ShapeOverlay = styled(Shape)<BG>`
-  z-index: 2;
-  top: 0px;
-  right: 0px;
+  z-index: 3;
   transform: scale(0);
 `;
 
@@ -40,18 +39,18 @@ const MenuWrapper = styled(animated.div)`
   bottom: 0;
   transform: scale(1);
   overflow: hidden;
+  z-index: 1;
 `;
 
 const Content = styled(animated.div)`
   position: absolute;
   width: 100%;
   height: 100%;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+  z-index: 999;
 `;
 
 const Overlay = styled(animated.div)<BG>`
+  z-index: 0;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -93,15 +92,13 @@ export const ExpandingCircle: React.SFC<Props> = ({
   });
   useChain(
     open ? [sor, shr, tr] : [tr, sor, shr],
-    open ? [0.4, 0.4, 0.4] : [0, 0.4, 0.4]
+    open ? [0.4, 0.4, 0.6] : [0, 0.4, 0.4]
   );
   return (
-    <div>
-      <ButtonWrapper>
-        <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
-        <ShapeOverlay bg={fg} style={so} />
-        <Shape bg={bg} style={{ transform: sh.transform }} />
-      </ButtonWrapper>
+    <Wrapper>
+      <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
+      <ShapeOverlay bg={fg} style={so} />
+      <Shape bg={bg} style={{ transform: sh.transform }} />
       {transitions.map(
         ({ item, key, props }) =>
           item && (
@@ -111,6 +108,6 @@ export const ExpandingCircle: React.SFC<Props> = ({
             </MenuWrapper>
           )
       )}
-    </div>
+    </Wrapper>
   );
 };

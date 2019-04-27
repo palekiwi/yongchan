@@ -7,7 +7,7 @@ type Props = { open: boolean; bg: string };
 const Wrapper = styled.div<{ open: boolean }>`
   position: relative;
   cursor: pointer;
-  z-index: 3;
+  z-index: 99;
   position: relative;
   background: transparent;
   box-shadow: ${shadow(1)};
