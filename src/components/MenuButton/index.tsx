@@ -37,7 +37,7 @@ const First = styled(Line)<Props>`
   top: 0px;
   background: ${props => color(props.bg)};
   transform-origin: 0% 0%;
-  transition: all 400ms ease-out 800ms;
+  transition: all 400ms ease-out 400ms;
   transform: scaleX(1) translateX(0px);
   ${props =>
     props.open &&
@@ -51,7 +51,7 @@ const Second = styled(Line)`
   top: 5px;
   background: ${props => color(props.bg)};
   transform-origin: 100% 100%;
-  transition: all 400ms ease-out 800ms;
+  transition: all 400ms ease-out 400ms;
   transform: scaleX(1) translateX(0);
   ${props =>
     props.open &&

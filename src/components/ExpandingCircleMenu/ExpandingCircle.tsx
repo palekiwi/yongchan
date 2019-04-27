@@ -72,19 +72,25 @@ export const ExpandingCircle: React.SFC<Props> = ({
   fg,
   children,
 }) => {
+  const sor = useRef();
+  const shr = useRef();
+  const tr = useRef();
   const transitions = useTransition(open, null, {
+    ref: tr,
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
   const so = useSpring({
+    ref: sor,
+    opacity: open ? 1 : 0,
     transform: open ? "scale(1)" : "scale(0)",
-    delay: 400,
   });
   const sh = useSpring({
+    ref: shr,
     transform: open ? `scale(${window.innerWidth / 46})` : "scale(1)",
-    delay: open ? 400 : 0,
   });
+  useChain(open ? [sor, shr, tr] : [shr, tr, sor], [0.4, 0.4, 0.4]);
   return (
     <div>
       <ButtonWrapper>
@@ -96,6 +102,7 @@ export const ExpandingCircle: React.SFC<Props> = ({
         ({ item, key, props }) =>
           item && (
             <MenuWrapper key={key}>
+              <Overlay style={props} bg={bg} />
               <Content>{children}</Content>
             </MenuWrapper>
           )
