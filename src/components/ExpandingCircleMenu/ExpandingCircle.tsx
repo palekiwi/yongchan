@@ -75,12 +75,6 @@ export const ExpandingCircle: React.SFC<Props> = ({
   const sor = useRef();
   const shr = useRef();
   const tr = useRef();
-  const transitions = useTransition(open, null, {
-    ref: tr,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  });
   const so = useSpring({
     ref: sor,
     opacity: open ? 1 : 0,
@@ -89,21 +83,31 @@ export const ExpandingCircle: React.SFC<Props> = ({
   const sh = useSpring({
     ref: shr,
     transform: open ? `scale(${window.innerWidth / 46})` : "scale(1)",
+    opacity: open ? 1 : 0,
   });
-  useChain(open ? [sor, shr, tr] : [shr, tr, sor], [0.4, 0.4, 0.4]);
+  const transitions = useTransition(open, null, {
+    ref: tr,
+    from: { opacity: 0, transform: "translateX(10px)" },
+    enter: { opacity: 1, transform: "translateX(0px)" },
+    leave: { opacity: 0, transform: "translateX(10px)" },
+  });
+  useChain(
+    open ? [sor, shr, tr] : [tr, sor, shr],
+    open ? [0.4, 0.4, 0.4] : [0, 0.4, 0.4]
+  );
   return (
     <div>
       <ButtonWrapper>
         <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
         <ShapeOverlay bg={fg} style={so} />
-        <Shape bg={bg} style={sh} />
+        <Shape bg={bg} style={{ transform: sh.transform }} />
       </ButtonWrapper>
       {transitions.map(
         ({ item, key, props }) =>
           item && (
             <MenuWrapper key={key}>
-              <Overlay style={props} bg={bg} />
-              <Content>{children}</Content>
+              <Overlay style={{ opacity: sh.opacity }} bg={bg} />
+              <Content style={props}>{children}</Content>
             </MenuWrapper>
           )
       )}
