@@ -1,8 +1,8 @@
-import * as React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { color } from "src/theme";
 import { MenuButton } from "src/components/MenuButton";
-import { animated, useTransition } from "react-spring";
+import { animated, useTransition, useChain, useSpring } from "react-spring";
 
 type BG = { bg: string };
 
@@ -35,13 +35,14 @@ const MenuWrapper = styled(animated.div)`
   overflow: hidden;
 `;
 
-const Content = styled.div`
+const Content = styled(animated.div)`
   position: absolute;
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
   z-index: 2;
+  opacity: 0;
 `;
 
 const Overlay = styled(animated.div)<BG>`
@@ -65,11 +66,20 @@ export const ExpandingCircle: React.SFC<Props> = ({
   fg,
   children,
 }) => {
+  const transRef = useRef();
+  const springRef = useRef();
   const transitions = useTransition(open, null, {
     from: { opacity: 0, sc: 1 },
     enter: { opacity: 1, sc: window.innerWidth / 48 },
     leave: { opacity: 0, sc: 1 },
+    ref: transRef,
   });
+  const spring = useSpring({
+    color: open ? "green" : "red",
+    opacity: open ? 1 : 0,
+    ref: springRef,
+  });
+  useChain(open ? [transRef, springRef] : [springRef, transRef], [0.4, 0.8]);
   return (
     <div>
       <ButtonWrapper>
@@ -86,7 +96,7 @@ export const ExpandingCircle: React.SFC<Props> = ({
                   transform: props.sc.interpolate(x => `scale(${x})`),
                 }}
               />
-              <Content>{children}</Content>
+              <Content style={spring}>{children}</Content>
             </MenuWrapper>
           )
       )}
