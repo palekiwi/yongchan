@@ -13,7 +13,7 @@ const Root = styled.div`
   background: linear-gradient(
     45deg,
     ${color("divider.light")},
-    ${color("divider.main")}
+    ${color("divider.dark")}
   );
 `;
 
@@ -67,6 +67,7 @@ const Box = styled.div`
 
 const Content = styled.div`
   position: absolute;
+  padding: ${space(3)} 0;
   width: 100%;
   ${desktop(css`
     position: static;
@@ -112,10 +113,10 @@ const Welcome: React.SFC<Props> = () => {
           <Content>
             <Characters>
               <Box>
-                <Yong size={200} fill="primary.light" />
+                <Yong size={200} fill="primary.main" />
               </Box>
               <Box>
-                <Chan size={200} fill="primary.light" />
+                <Chan size={200} fill="primary.main" />
               </Box>
             </Characters>
           </Content>
