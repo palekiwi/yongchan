@@ -29,6 +29,7 @@ const Shape = styled(animated.div)<BG>`
 
 const Title = styled.div<{ open: boolean }>`
   ${greatPrimer};
+  cursor: pointer;
   height: 100%;
   vertical-align: center;
   margin-bottom: 0;
@@ -127,7 +128,7 @@ export const ExpandingCircle: React.SFC<Props> = ({
   );
   return (
     <Wrapper>
-      <Title open={open}>
+      <Title open={open} onClick={toggleMenu}>
         <span>Yong</span>
         <span>Chan</span>
       </Title>
