@@ -48,11 +48,17 @@ const PhotoHalf = styled(Image)`
 `;
 
 const Box = styled.div`
-  width: 50%;
+  margin-left: 25%;
+  width: 25%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${space(3)};
+  padding: ${space(1)};
+  ${desktop(css`
+    margin-left: 0;
+    padding: ${space(3)};
+    width: 50%;
+  `)}
 `;
 
 const Content = styled.div`

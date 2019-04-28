@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { color, space } from "src/theme";
+import { desktop } from "src/theme/media";
 import { Container } from "src/components/Container";
 import {
   HaskellIcon,
@@ -54,6 +55,7 @@ const Pane = styled.div`
 `;
 
 const Icon = styled.div<{ top: string; left: string }>`
+  display: ${props => (props.left === "0%" || props.left === "100%") && "none"};
   position: absolute;
   top: ${props => props.top};
   background: ${color("background.main")};
@@ -63,6 +65,9 @@ const Icon = styled.div<{ top: string; left: string }>`
   left: calc(${props => props.left} - ${space(3)});
   border: 1px solid ${color(fg)};
   border-radius: 50%;
+  ${desktop(css`
+    display: block;
+  `)}
 `;
 
 const Background: React.SFC<Props> = () => {
