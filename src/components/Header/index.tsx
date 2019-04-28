@@ -8,8 +8,11 @@ interface Props {}
 const Wrapper = styled.div`
   background: ${color("white.main")};
   border-bottom: 1px solid ${color("divider.light")};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 66px;
+  padding: ${space(2)} 0;
 `;
 
 const Header: React.SFC<Props> = () => {

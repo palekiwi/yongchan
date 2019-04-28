@@ -11,18 +11,18 @@ const Wrapper = styled.div<{ open: boolean }>`
   position: relative;
   background: transparent;
   box-shadow: ${shadow(1)};
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   transition: all 400ms ease-out 400ms;
 `;
 
 const Lines = styled.div`
   position: absolute;
-  top: 18px;
-  left: 15px;
-  width: 46px;
-  height: 46px;
+  top: 17px;
+  left: 14px;
+  width: 44px;
+  height: 44px;
 `;
 
 const Line = styled.div<Props>`

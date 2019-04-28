@@ -1,17 +1,17 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { color } from "src/theme";
+import { color, space, weight } from "src/theme";
 import { MenuButton } from "src/components/MenuButton";
 import { animated, useTransition, useChain, useSpring } from "react-spring";
 import { greatPrimer } from "src/theme/typography";
 
 type BG = { bg: string };
 
+const width = 44;
+
 const Wrapper = styled.div`
   z-index: 0;
-  position: fixed;
-  top: 10px;
-  left: calc(50% - 23px);
+  position: relative;
 `;
 
 const Shape = styled(animated.div)<BG>`
@@ -20,25 +20,39 @@ const Shape = styled(animated.div)<BG>`
   position: absolute;
   top: 0px;
   left: 0px;
-  height: 46px;
+  height: ${width}px;
   transform: scale(1);
-  width: 46px;
+  width: ${width}px;
   border-radius: 50%;
   z-index: 0;
 `;
 
-const Title = styled.div`
+const Title = styled.div<{ open: boolean }>`
   ${greatPrimer};
+  height: 100%;
+  vertical-align: center;
+  margin-bottom: 0;
   position: absolute;
-  font-weight: 600;
+  top: 0;
+  left: ${width / 2}px;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  height: ${width}px;
+  font-weight: ${weight("bold")};
   text-transform: uppercase;
-  top: 10px;
-  transform: translateX(-36%);
+  & span {
+    transition: 400ms ease-out ${props => (props.open ? 0 : 600)}ms;
+    opacity: ${props => (props.open ? 0 : 1)};
+    position: absolute;
+  }
   & span:first-child {
+    padding-right: ${props => (props.open ? 0 : width / 2 + 4)}px;
+    transform: translateX(-100%);
     color: ${color("primary.main")};
   }
   & span:last-child {
-    margin-left: 55px;
+    padding-left: ${props => (props.open ? 0 : width / 2 + 4)}px;
     color: ${color("grey.400")};
   }
 `;
@@ -98,7 +112,7 @@ export const ExpandingCircle: React.SFC<Props> = ({
   });
   const sh = useSpring({
     ref: shr,
-    transform: open ? `scale(${window.innerWidth / 46})` : "scale(1)",
+    transform: open ? `scale(${window.innerWidth / width})` : "scale(1)",
     opacity: open ? 1 : 0,
   });
   const transitions = useTransition(open, null, {
@@ -113,7 +127,7 @@ export const ExpandingCircle: React.SFC<Props> = ({
   );
   return (
     <Wrapper>
-      <Title>
+      <Title open={open}>
         <span>Yong</span>
         <span>Chan</span>
       </Title>
