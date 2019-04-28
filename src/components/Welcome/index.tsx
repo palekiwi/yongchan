@@ -1,21 +1,28 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
+import { color } from "src/theme";
 import { Image } from "src/components/Image";
+import { Container } from "src/components/Container";
 
 interface Props {}
 
-const Root = styled.div`
+const Root = styled.div``;
+
+const Inner = styled.div`
   display: flex;
+  background: ${color("background.main")};
 `;
+
 const Photo = styled.div`
-  border: 1px solid green;
   width: 100%;
-  height: auto%;
+  min-height: 500px;
   max-height: calc(100vh - 60px);
+  overflow: hidden;
 `;
 const Content = styled.div`
   width: 100%;
+  background: ${color("text.dark")};
 `;
 
 interface Data {
@@ -36,14 +43,18 @@ const Welcome: React.SFC<Props> = () => {
   `);
   return (
     <Root>
-      <Photo>
-        <Image
-          imgStyle={{ objectFit: "contain" }}
-          style={{ height: "100%", textAlign: "right" }}
-          fluid={data.profileHalf}
-        />
-      </Photo>
-      <Content />
+      <Container>
+        <Inner>
+          <Photo>
+            <Image
+              imgStyle={{ objectPosition: "100% 0%" }}
+              style={{ height: "100%", width: "auto" }}
+              fluid={data.profileHalf}
+            />
+          </Photo>
+          <Content />
+        </Inner>
+      </Container>
     </Root>
   );
 };
