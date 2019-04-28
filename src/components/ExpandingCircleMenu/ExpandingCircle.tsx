@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { color, space, weight } from "src/theme";
+import { color, weight } from "src/theme";
 import { MenuButton } from "src/components/MenuButton";
 import { animated, useTransition, useChain, useSpring } from "react-spring";
 import { greatPrimer } from "src/theme/typography";

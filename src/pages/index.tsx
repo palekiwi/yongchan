@@ -9,6 +9,7 @@ const IndexPage: React.SFC<Props> = () => {
     <>
       <SEO title="chuj" />
       <Welcome />
+      <div style={{ width: "100%", height: "50vh" }} />
     </>
   );
 };

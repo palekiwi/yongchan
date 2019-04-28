@@ -1,7 +1,7 @@
 import { darken, lighten } from "../utils/helpers";
 
-const primary = "#2A313D";
-const secondary = "#ED1C24";
+const primary = "#687789";
+const secondary = "#FF6A67";
 
 export const colors = {
   primary: {

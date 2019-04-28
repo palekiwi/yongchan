@@ -1,17 +1,26 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
-import { color } from "src/theme";
+import styled, { css } from "styled-components";
+import { desktop } from "src/theme/media";
+import { color, space } from "src/theme";
 import { Image } from "src/components/Image";
 import { Container } from "src/components/Container";
+import { Yong, Chan } from "src/components/Hanzi";
 
 interface Props {}
 
-const Root = styled.div``;
+const Root = styled.div`
+  background: transparent;
+  border-bottom: 1px solid ${color("divider.light")};
+`;
 
 const Inner = styled.div`
   display: flex;
-  background: ${color("background.main")};
+  position: relative;
+  flex-direction: column;
+  ${desktop(css`
+    flex-direction: row;
+  `)}
 `;
 
 const Photo = styled.div`
@@ -20,13 +29,52 @@ const Photo = styled.div`
   max-height: calc(100vh - 60px);
   overflow: hidden;
 `;
-const Content = styled.div`
+
+const PhotoFull = styled(Image)`
+  display: none;
   width: 100%;
-  background: ${color("text.dark")};
+  height: 100%;
+  ${desktop(css`
+    display: block;
+  `)}
+`;
+
+const PhotoHalf = styled(Image)`
+  width: auto;
+  height: 100%;
+  max-height: calc(100vh - 60px);
+  ${desktop(css`
+    display: none;
+  `)}
+`;
+
+const Box = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${space(3)};
+`;
+
+const Content = styled.div`
+  position: absolute;
+  width: 100%;
+  ${desktop(css`
+    position: static;
+  `)}
+`;
+
+const Characters = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${desktop(css`
+    flex-direction: row;
+  `)}
 `;
 
 interface Data {
   profileHalf: any;
+  profile: any;
 }
 
 const Welcome: React.SFC<Props> = () => {
@@ -39,20 +87,39 @@ const Welcome: React.SFC<Props> = () => {
           }
         }
       }
+      profile: file(relativePath: { eq: "profile-whole.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 960) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `);
   return (
     <Root>
       <Container>
         <Inner>
+          <Content>
+            <Characters>
+              <Box>
+                <Yong size={200} fill="primary.light" />
+              </Box>
+              <Box>
+                <Chan size={200} fill="primary.light" />
+              </Box>
+            </Characters>
+          </Content>
           <Photo>
-            <Image
+            <PhotoFull
               imgStyle={{ objectPosition: "100% 0%" }}
-              style={{ height: "100%", width: "auto" }}
+              fluid={data.profile}
+            />
+            <PhotoHalf
+              imgStyle={{ objectFit: "contain", objectPosition: "100% 0%" }}
               fluid={data.profileHalf}
             />
           </Photo>
-          <Content />
         </Inner>
       </Container>
     </Root>

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { color, fonts } from "src/theme";
 import Helmet from "react-helmet";
 import { Header } from "src/components/Header";
+import { Background } from "src/components/Background";
 
 import { Normalize } from "styled-normalize";
 
@@ -83,6 +84,7 @@ export const Layout: React.SFC<Props> = ({ children }) => {
             <Normalize />
             <GlobalStyle />
             <Content>
+              <Background />
               <Header />
               <Main>{children}</Main>
             </Content>
