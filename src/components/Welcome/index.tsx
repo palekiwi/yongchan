@@ -113,10 +113,10 @@ const Welcome: React.SFC<Props> = () => {
           <Content>
             <Characters>
               <Box>
-                <Yong size={200} fill="primary.main" />
+                <Yong fill="grey.900" />
               </Box>
               <Box>
-                <Chan size={200} fill="primary.main" />
+                <Chan fill="grey.900" />
               </Box>
             </Characters>
           </Content>
