@@ -1,8 +1,9 @@
-import * as React from "react";
+import React, { useCallback } from "react";
 import styled, { css } from "styled-components";
 import { color, space } from "src/theme";
 import { Container } from "src/components/Container";
 import { HaskellIcon, ReactIcon } from "src/components/Icon";
+import { useSpring, animated as a, interpolate } from "react-spring";
 
 interface Props {}
 
@@ -37,7 +38,7 @@ const Pane = styled.div`
   }
 `;
 
-const Icon = styled.div<{ top: string; last?: boolean }>`
+const Icon = styled(a.div)<{ top: string; last?: boolean }>`
   position: absolute;
   top: ${props => props.top};
   border-radius: 50%;
@@ -55,36 +56,49 @@ const Icon = styled.div<{ top: string; last?: boolean }>`
         `}
 `;
 
-const Background: React.SFC<Props> = () => (
-  <Wrapper>
-    <Container>
-      <Inner>
-        <Pane>
-          <Icon top="30em">
-            <HaskellIcon fill="divider.light" />
-          </Icon>
-        </Pane>
-        <Pane>
-          <Icon top="45em">
-            <ReactIcon fill="divider.light" />
-          </Icon>
-        </Pane>
-        <Pane>
-          <Icon top="60em">
-            <HaskellIcon fill="divider.light" />
-          </Icon>
-        </Pane>
-        <Pane>
-          <Icon top="24em">
-            <ReactIcon fill="divider.light" />
-          </Icon>
-          <Icon top="34em" last>
-            <HaskellIcon fill="divider.light" />
-          </Icon>
-        </Pane>
-      </Inner>
-    </Container>
-  </Wrapper>
-);
+const Background: React.SFC<Props> = () => {
+  const [{ st }, set] = useSpring(() => ({ st: 0 }));
+  const onScroll = useCallback(e => {
+    set({ st: window.pageYOffset / 15 });
+  }, []);
+  React.useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <Wrapper>
+      <Container>
+        <Inner>
+          <Pane>
+            <Icon
+              top="30em"
+              style={{ transform: st.interpolate(o => `translate(0,${o}px)`) }}
+            >
+              <HaskellIcon fill="divider.light" />
+            </Icon>
+          </Pane>
+          <Pane>
+            <Icon top="45em">
+              <ReactIcon fill="divider.light" />
+            </Icon>
+          </Pane>
+          <Pane>
+            <Icon top="60em">
+              <HaskellIcon fill="divider.light" />
+            </Icon>
+          </Pane>
+          <Pane>
+            <Icon top="24em">
+              <ReactIcon fill="divider.light" />
+            </Icon>
+            <Icon top="34em" last>
+              <HaskellIcon fill="divider.light" />
+            </Icon>
+          </Pane>
+        </Inner>
+      </Container>
+    </Wrapper>
+  );
+};
 
 export { Background };
