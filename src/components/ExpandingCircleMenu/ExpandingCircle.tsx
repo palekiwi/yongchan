@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { color } from "src/theme";
 import { MenuButton } from "src/components/MenuButton";
 import { animated, useTransition, useChain, useSpring } from "react-spring";
+import { greatPrimer } from "src/theme/typography";
 
 type BG = { bg: string };
 
@@ -10,7 +11,7 @@ const Wrapper = styled.div`
   z-index: 0;
   position: fixed;
   top: 10px;
-  right: 10px;
+  left: calc(50% - 23px);
 `;
 
 const Shape = styled(animated.div)<BG>`
@@ -18,12 +19,28 @@ const Shape = styled(animated.div)<BG>`
   background: ${props => color(props.bg)};
   position: absolute;
   top: 0px;
-  right: 0px;
+  left: 0px;
   height: 46px;
   transform: scale(1);
   width: 46px;
   border-radius: 50%;
   z-index: 0;
+`;
+
+const Title = styled.div`
+  ${greatPrimer};
+  position: absolute;
+  font-weight: 600;
+  text-transform: uppercase;
+  top: 10px;
+  transform: translateX(-36%);
+  & span:first-child {
+    color: ${color("primary.main")};
+  }
+  & span:last-child {
+    margin-left: 55px;
+    color: ${color("grey.400")};
+  }
 `;
 
 const ShapeOverlay = styled(Shape)<BG>`
@@ -86,9 +103,9 @@ export const ExpandingCircle: React.SFC<Props> = ({
   });
   const transitions = useTransition(open, null, {
     ref: tr,
-    from: { opacity: 0, transform: "translateX(10px)" },
-    enter: { opacity: 1, transform: "translateX(0px)" },
-    leave: { opacity: 0, transform: "translateX(10px)" },
+    from: { opacity: 0, transform: "translateY(-10px)" },
+    enter: { opacity: 1, transform: "translateY(0px)" },
+    leave: { opacity: 0, transform: "translateY(-10px)" },
   });
   useChain(
     open ? [sor, shr, tr] : [tr, sor, shr],
@@ -96,6 +113,10 @@ export const ExpandingCircle: React.SFC<Props> = ({
   );
   return (
     <Wrapper>
+      <Title>
+        <span>Yong</span>
+        <span>Chan</span>
+      </Title>
       <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
       <ShapeOverlay bg={fg} style={so} />
       <Shape bg={bg} style={{ transform: sh.transform }} />

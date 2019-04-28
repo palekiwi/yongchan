@@ -2,8 +2,6 @@ import { shadows } from "./shadows";
 import { colors } from "./colors";
 import { unit, rem, mapToRem } from "./utils";
 
-type Scale = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-
 const sizes = mapToRem([0, 4, 8, 16, 32, 64, 128, 256, 512]);
 const spaces = mapToRem([0, 4, 8, 16, 32, 64, 128, 256, 512]);
 const fontSizes = mapToRem([12, 14, 15, 16, 18, 20, 24, 26, 28, 32, 36, 44]);
@@ -29,7 +27,7 @@ export const gap = rem(16);
 export const devices = widths.map(x => `@media (min-width: ${x})`);
 
 export const fonts = {
-  sans: "Muli, sans",
+  sans: "Khula",
   serif: "serif",
 };
 
