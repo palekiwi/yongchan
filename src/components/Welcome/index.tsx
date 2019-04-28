@@ -10,7 +10,7 @@ import { Yong, Chan } from "src/components/Hanzi";
 interface Props {}
 
 const Root = styled.div`
-  background: transparent;
+  background: linear-gradient(45deg, transparent, ${color("divider.light")});
   border-bottom: 1px solid ${color("divider.light")};
 `;
 

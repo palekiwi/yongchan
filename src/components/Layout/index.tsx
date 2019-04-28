@@ -35,14 +35,15 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: ${color("background.main")};
 `;
 
 const Main = styled.div`
+  z-index: 0;
   display: flex;
   width: 100%;
   flex-direction: column;
   margin: 0 auto;
-  background: ${color("background.main")};
   flex-grow: 1;
   margin-top: 60px;
 `;
