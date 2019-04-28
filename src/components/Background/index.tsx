@@ -54,7 +54,7 @@ const Pane = styled.div`
   }
 `;
 
-const Icon = styled.div<{ top: string; left: string }>`
+const Icon = styled.div<{ top: string; left: string; square?: boolean }>`
   display: ${props => (props.left === "0%" || props.left === "100%") && "none"};
   position: absolute;
   top: ${props => props.top};
@@ -64,7 +64,7 @@ const Icon = styled.div<{ top: string; left: string }>`
   height: ${space(4)};
   left: calc(${props => props.left} - ${space(3)});
   border: 1px solid ${color(fg)};
-  border-radius: 50%;
+  border-radius: ${props => (props.square ? "2px" : "50%")};
   ${desktop(css`
     display: block;
   `)}
@@ -95,10 +95,10 @@ const Background: React.SFC<Props> = () => {
               <LambdaIcon fill={"divider.main"} />
             </Icon>
             <Icon left="75%" top="62em">
-              <TypescriptIcon fill={"divider.main"} />
-            </Icon>
-            <Icon left="100%" top="15em">
               <ReactIcon fill={"divider.main"} />
+            </Icon>
+            <Icon left="100%" top="15em" square>
+              <TypescriptIcon fill={"divider.main"} />
             </Icon>
           </Icons>
           <Pane />
