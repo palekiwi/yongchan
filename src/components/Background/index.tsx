@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { color, space } from "src/theme";
 import { Container } from "src/components/Container";
 import { HaskellIcon, ReactIcon } from "src/components/Icon";
-import { useSpring, animated as a, interpolate } from "react-spring";
+import { useSpring, animated as a } from "react-spring";
 
 interface Props {}
 
@@ -26,6 +26,16 @@ const Inner = styled.div`
   height: 100vh;
   display: flex;
   z-index: 0;
+  position: relative;
+`;
+
+const Icons = styled(a.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
 `;
 
 const Pane = styled.div`
@@ -38,63 +48,51 @@ const Pane = styled.div`
   }
 `;
 
-const Icon = styled(a.div)<{ top: string; last?: boolean }>`
+const Icon = styled.div<{ top: string; left: string }>`
   position: absolute;
   top: ${props => props.top};
-  border-radius: 50%;
   background: ${color("background.main")};
   padding: ${space(1)};
   width: ${space(4)};
   height: ${space(4)};
-  ${props =>
-    props.last
-      ? css`
-          right: -${space(3)};
-        `
-      : css`
-          left: -${space(3)};
-        `}
+  left: calc(${props => props.left} - ${space(3)});
 `;
 
 const Background: React.SFC<Props> = () => {
   const [{ st }, set] = useSpring(() => ({ st: 0 }));
   const onScroll = useCallback(e => {
-    set({ st: window.pageYOffset / 15 });
+    set({ st: window.pageYOffset / 30 });
   }, []);
   React.useEffect(() => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  const interp = st.interpolate(o => `translate(0,${o}px)`);
   return (
     <Wrapper>
       <Container>
         <Inner>
-          <Pane>
-            <Icon
-              top="30em"
-              style={{ transform: st.interpolate(o => `translate(0,${o}px)`) }}
-            >
-              <HaskellIcon fill="divider.light" />
+          <Icons style={{ transform: interp }}>
+            <Icon left="0%" top="20em">
+              <HaskellIcon fill={fg} />
             </Icon>
-          </Pane>
-          <Pane>
-            <Icon top="45em">
-              <ReactIcon fill="divider.light" />
+            <Icon left="25%" top="35em">
+              <ReactIcon fill={fg} />
             </Icon>
-          </Pane>
-          <Pane>
-            <Icon top="60em">
-              <HaskellIcon fill="divider.light" />
+            <Icon left="50%" top="20em">
+              <HaskellIcon fill={fg} />
             </Icon>
-          </Pane>
-          <Pane>
-            <Icon top="24em">
-              <ReactIcon fill="divider.light" />
+            <Icon left="75%" top="35em">
+              <ReactIcon fill={fg} />
             </Icon>
-            <Icon top="34em" last>
-              <HaskellIcon fill="divider.light" />
+            <Icon left="100%" top="35em">
+              <ReactIcon fill={fg} />
             </Icon>
-          </Pane>
+          </Icons>
+          <Pane />
+          <Pane />
+          <Pane />
+          <Pane />
         </Inner>
       </Container>
     </Wrapper>
