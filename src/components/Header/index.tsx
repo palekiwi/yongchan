@@ -1,18 +1,20 @@
 import * as React from "react";
 import { ExpandingCircleMenu } from "src/components/ExpandingCircleMenu";
 import styled from "styled-components";
-import { color, space } from "src/theme";
+import { color } from "src/theme";
 
 interface Props {}
 
 const Wrapper = styled.div`
-  background: ${color("white.main")};
+  background: ${color("white.light")};
   border-bottom: 1px solid ${color("divider.light")};
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: ${space(2)} 0;
+  height: 60px;
+  position: fixed;
+  z-index: 99;
 `;
 
 const Header: React.SFC<Props> = () => {

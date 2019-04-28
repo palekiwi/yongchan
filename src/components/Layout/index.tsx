@@ -43,6 +43,7 @@ const Main = styled.div`
   margin: 0 auto;
   background: ${color("background.main")};
   flex-grow: 1;
+  margin-top: 60px;
 `;
 
 interface Data {
