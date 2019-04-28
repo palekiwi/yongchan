@@ -11,7 +11,6 @@ interface Props {}
 
 const Root = styled.div`
   background: linear-gradient(45deg, transparent, ${color("divider.light")});
-  border-bottom: 1px solid ${color("divider.light")};
 `;
 
 const Inner = styled.div`

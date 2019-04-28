@@ -2,8 +2,13 @@ import React, { useCallback } from "react";
 import styled from "styled-components";
 import { color, space } from "src/theme";
 import { Container } from "src/components/Container";
-import { HaskellIcon, ReactIcon } from "src/components/Icon";
-import { useSpring, animated as a } from "react-spring";
+import {
+  HaskellIcon,
+  ReactIcon,
+  TypescriptIcon,
+  LambdaIcon,
+} from "src/components/Icon";
+import { config, useSpring, animated as a } from "react-spring";
 
 interface Props {}
 
@@ -56,37 +61,39 @@ const Icon = styled.div<{ top: string; left: string }>`
   width: ${space(4)};
   height: ${space(4)};
   left: calc(${props => props.left} - ${space(3)});
+  border: 1px solid ${color(fg)};
+  border-radius: 50%;
 `;
 
 const Background: React.SFC<Props> = () => {
-  const [{ st }, set] = useSpring(() => ({ st: 0 }));
+  const [{ st }, set] = useSpring(() => ({ st: 0, config: config.molasses }));
   const onScroll = useCallback(e => {
-    set({ st: window.pageYOffset / 30 });
+    set({ st: window.pageYOffset / 2 });
   }, []);
   React.useEffect(() => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const interp = st.interpolate(o => `translate(0,${o}px)`);
+  const interp = st.interpolate(o => `translate(0,${o + 25}px)`);
   return (
     <Wrapper>
       <Container>
         <Inner>
           <Icons style={{ transform: interp }}>
             <Icon left="0%" top="20em">
-              <HaskellIcon fill={fg} />
+              <HaskellIcon fill={"divider.main"} />
             </Icon>
             <Icon left="25%" top="35em">
-              <ReactIcon fill={fg} />
+              <ReactIcon fill={"divider.main"} />
             </Icon>
-            <Icon left="50%" top="20em">
-              <HaskellIcon fill={fg} />
+            <Icon left="50%" top="28em">
+              <LambdaIcon fill={"divider.main"} />
             </Icon>
-            <Icon left="75%" top="35em">
-              <ReactIcon fill={fg} />
+            <Icon left="75%" top="62em">
+              <TypescriptIcon fill={"divider.main"} />
             </Icon>
-            <Icon left="100%" top="35em">
-              <ReactIcon fill={fg} />
+            <Icon left="100%" top="15em">
+              <ReactIcon fill={"divider.main"} />
             </Icon>
           </Icons>
           <Pane />
