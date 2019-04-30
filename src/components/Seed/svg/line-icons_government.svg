@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="government" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<g>
+	<polygon fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" points="50,87.5 21.5,87.5 21.5,65.5 18.5,65.5 18.5,62.631 
+		23.664,58.5 50,58.5 76.336,58.5 81.5,62.631 81.5,65.5 78.5,65.5 78.5,87.5 	"/>
+</g>
+<polygon fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" points="32.959,87.418 32.959,66.278 50,63.181 67.041,66.278 
+	67.041,87.418 "/>
+<path id="dome_1_" fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" d="M28.505,43.589
+	c0-8.663,9.624-15.686,21.495-15.686s21.495,7.023,21.495,15.686"/>
+<rect x="28.5" y="49.5" fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" width="43" height="9"/>
+<rect x="47.5" y="52.5" fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" width="4" height="4"/>
+<rect x="62.5" y="52.5" fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" width="5" height="4"/>
+<rect x="32.5" y="52.5" fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" width="5" height="4"/>
+<line fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" x1="63.426" y1="73.54" x2="63.426" y2="85.61"/>
+<line fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" x1="58.936" y1="73.54" x2="58.936" y2="85.61"/>
+<line fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" x1="54.447" y1="73.54" x2="54.447" y2="85.61"/>
+<line fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" x1="49.958" y1="73.54" x2="49.958" y2="85.61"/>
+<line fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" x1="45.468" y1="73.54" x2="45.468" y2="85.61"/>
+<line fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" x1="40.978" y1="73.54" x2="40.978" y2="85.61"/>
+<path fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" d="M40.337,87.935"/>
+<path fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" d="M40.337,71.926"/>
+<line fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" x1="36.488" y1="73.54" x2="36.488" y2="85.61"/>
+<line fill="#FFFFFF" stroke="#333333" stroke-linecap="round" stroke-miterlimit="10" x1="36.058" y1="71.41" x2="63.942" y2="71.41"/>
+<path fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" d="M49.483,59.017"/>
+<g>
+	<path fill="#FFFFFF" d="M75,47c0,1.104-0.896,2-2,2H27c-1.104,0-2-0.896-2-2l0,0c0-1.104,0.896-2,2-2h46C74.104,45,75,45.896,75,47
+		L75,47z"/>
+	<path fill="none" stroke="#333333" stroke-miterlimit="10" d="M74.5,47.5c0,1.104-0.896,2-2,2h-46c-1.104,0-2-0.896-2-2l0,0
+		c0-1.104,0.896-2,2-2h46C73.604,45.5,74.5,46.396,74.5,47.5L74.5,47.5z"/>
+</g>
+<g id="flag_1_">
+	<rect x="49.5" y="13.5" fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" width="13" height="8"/>
+	<line fill="#FFFFFF" stroke="#333333" stroke-miterlimit="10" x1="49.483" y1="16.155" x2="49.483" y2="27.517"/>
+</g>
+</svg>
