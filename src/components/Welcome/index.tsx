@@ -28,7 +28,6 @@ const Inner = styled.div`
 
 const Photo = styled.div`
   width: 100%;
-  min-height: 500px;
   max-height: calc(100vh - 60px);
   overflow: hidden;
 `;
