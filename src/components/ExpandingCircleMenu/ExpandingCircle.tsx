@@ -36,7 +36,7 @@ const Title = styled.div<{ open: boolean }>`
   position: absolute;
   top: 0;
   left: ${width / 2}px;
-  padding-top: 8px;
+  padding-top: 2px;
   display: flex;
   align-items: center;
   height: ${width}px;

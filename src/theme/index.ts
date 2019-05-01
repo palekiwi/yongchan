@@ -27,7 +27,7 @@ export const gap = rem(16);
 export const devices = widths.map(x => `@media (min-width: ${x})`);
 
 export const fonts = {
-  sans: "Khula",
+  sans: "Lato, sans",
   serif: "serif",
 };
 

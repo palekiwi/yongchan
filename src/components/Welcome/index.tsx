@@ -6,7 +6,9 @@ import { color, space, weight } from "src/theme";
 import { royal } from "src/theme/typography";
 import { Image } from "src/components/Image";
 import { Container } from "src/components/Container";
+import { Button } from "src/components/Button";
 import { Yong, Chan } from "src/components/Hanzi";
+import Faker from "faker";
 
 interface Props {}
 
@@ -37,23 +39,31 @@ const Inner = styled.div`
   position: relative;
   flex-direction: column;
   height: 100%;
+  width: 100%;
   ${desktop(css`
     flex-direction: row;
+    align-items: center;
   `)}
 `;
 
 const Photo = styled.div`
+  z-index: 1;
+  flex-shrink: 0;
   width: 100%;
+  height: 100%;
   max-height: calc(100vh - 60px);
   overflow: hidden;
+  ${desktop(css`
+    width: 50%;
+  `)}
 `;
 
 const PhotoFull = styled(Image)`
   display: none;
-  width: 100%;
-  height: 100%;
   ${desktop(css`
     display: block;
+    width: 100%;
+    height: 100%;
   `)}
 `;
 
@@ -67,22 +77,23 @@ const PhotoHalf = styled(Image)`
 `;
 
 const Content = styled.div`
-  z-index: 1;
+  z-index: 2;
   position: absolute;
-  padding: ${space(3)} 0;
-  width: 50%;
-  overflow: hidden;
+  width: 100%;
   height: 100%;
   display: flex;
+  padding: ${space(2)};
+  border: 1px solid red;
   align-items: center;
   ${desktop(css`
     position: static;
+    padding: ${space(4)};
     width: 100%;
   `)}
 `;
 
 const Characters = styled.div`
-  opacity: 0.4;
+  opacity: 0.3;
   position: absolute;
   top: 0;
   left: 0;
@@ -124,13 +135,11 @@ const Character = styled.div`
 `;
 
 const Title = styled.div`
-  display: none;
   ${royal};
-  padding: ${space(3)};
-  border: 1px solid ${color("white.main")};
+  padding: ${space(4)};
   text-transform: uppercase;
   font-weight: ${weight("bold")};
-  color: ${color("primary.main")};
+  color: ${color("text.dark")};
 `;
 
 interface Data {
@@ -175,7 +184,10 @@ const Welcome: React.SFC<Props> = () => {
             </Box>
           </Characters>
           <Content>
-            <Title>Frontend</Title>
+            <Title>{Faker.lorem.words()}</Title>
+            <Button contained variant="white">
+              More
+            </Button>
           </Content>
           <Photo>
             <PhotoFull

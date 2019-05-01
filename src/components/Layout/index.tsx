@@ -80,7 +80,7 @@ export const Layout: React.SFC<Props> = ({ children }) => {
                 {
                   rel: "stylesheet",
                   href:
-                    "https://fonts.googleapis.com/css?family=Khula:300,400,700",
+                    "https://fonts.googleapis.com/css?family=Lato:300,400,700",
                 },
               ]}
             />

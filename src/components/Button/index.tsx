@@ -35,6 +35,7 @@ const ButtonLink: React.SFC<ButtonProps> = ({
 const defaultStyle = css<ButtonProps>`
   ${longPrimer};
   margin: 0;
+  vertical-align: baseline;
   white-space: nowrap;
   cursor: pointer;
   display: inline-block;
