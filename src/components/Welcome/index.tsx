@@ -58,6 +58,7 @@ const Box = styled.div`
   align-items: center;
   justify-content: center;
   padding: ${space(1)};
+  color: ${color("grey.100")};
   ${desktop(css`
     margin-left: 0;
     padding: ${space(3)};
@@ -113,10 +114,10 @@ const Welcome: React.SFC<Props> = () => {
           <Content>
             <Characters>
               <Box>
-                <Yong fill="grey.900" />
+                <Yong />
               </Box>
               <Box>
-                <Chan fill="grey.900" />
+                <Chan />
               </Box>
             </Characters>
           </Content>
