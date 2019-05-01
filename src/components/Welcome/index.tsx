@@ -88,7 +88,7 @@ const Content = styled.div`
   ${desktop(css`
     position: static;
     padding: ${space(4)};
-    width: 100%;
+    width: 50%;
   `)}
 `;
 
