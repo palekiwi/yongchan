@@ -13,6 +13,26 @@ export const base = css`
 `;
 
 // infographics, immersive stories
+export const imperial = css`
+  ${base}
+  font-size: ${rem(64)};
+  line-height: ${lineHeight(0)};
+
+  ${tablet(css`
+    font-size: ${rem(96)};
+  `)}
+`;
+
+export const royal = css`
+  ${base}
+  font-size: ${rem(52)};
+  line-height: ${lineHeight(0)};
+
+  ${tablet(css`
+    font-size: ${rem(76)};
+  `)}
+`;
+
 export const foolscap = css`
   ${base}
   font-size: ${rem(40)};
