@@ -87,19 +87,19 @@ const Background: React.SFC<Props> = ({ pr }) => {
       <Container>
         <Inner>
           <Icons style={{ transform: interp }}>
-            <Icon left="0%" top="20em">
+            <Icon left="0%" top="20rem">
               <HaskellIcon fill={"divider.main"} />
             </Icon>
-            <Icon left="25%" top="35em">
+            <Icon left="25%" top="35rem">
               <ReactIcon fill={"divider.main"} />
             </Icon>
-            <Icon left="50%" top="28em">
+            <Icon left="50%" top="28rem">
               <LambdaIcon fill={"divider.main"} />
             </Icon>
-            <Icon left="75%" top="62em">
+            <Icon left="75%" top="62rem">
               <ReactIcon fill={"divider.main"} />
             </Icon>
-            <Icon left="100%" top="15em" square>
+            <Icon left="100%" top="15rem" square>
               <TypescriptIcon fill={"divider.main"} />
             </Icon>
           </Icons>
