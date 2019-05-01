@@ -86,8 +86,8 @@ const Characters = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  margin-left: 25%;
-  width: 50%;
+  margin-left: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -100,12 +100,25 @@ const Characters = styled.div`
 `;
 
 const Box = styled.div`
-  padding: ${space(4)};
+  padding: ${space(3)};
+  &:nth-child(2) {
+    padding-top: 0;
+  }
   width: 100%;
+  height: 50%;
+  ${desktop(css`
+    padding: ${space(4)};
+    height: 100%;
+    width: 100%;
+    &:nth-child(2) {
+      padding-top: ${space(4)};
+    }
+  `)};
 `;
 
 const Character = styled.div`
   height: 100%;
+  background: linear-gradient(-45deg, transparent, ${color("divider.light")});
   border: 1px solid currentColor;
   padding: ${space(4)};
 `;
