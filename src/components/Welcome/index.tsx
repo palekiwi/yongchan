@@ -1,14 +1,13 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled, { css } from "styled-components";
-import { desktop } from "src/theme/media";
+import { tablet, desktop } from "src/theme/media";
 import { color, space, weight } from "src/theme";
-import { royal } from "src/theme/typography";
+import { foolscap, trafalgar } from "src/theme/typography";
 import { Image } from "src/components/Image";
 import { Container } from "src/components/Container";
 import { Button } from "src/components/Button";
 import { Yong, Chan } from "src/components/Hanzi";
-import Faker from "faker";
 
 interface Props {}
 
@@ -76,22 +75,6 @@ const PhotoHalf = styled(Image)`
   `)}
 `;
 
-const Content = styled.div`
-  z-index: 2;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  padding: ${space(2)};
-  border: 1px solid red;
-  align-items: center;
-  ${desktop(css`
-    position: static;
-    padding: ${space(4)};
-    width: 50%;
-  `)}
-`;
-
 const Characters = styled.div`
   opacity: 0.3;
   position: absolute;
@@ -134,12 +117,43 @@ const Character = styled.div`
   padding: ${space(4)};
 `;
 
-const Title = styled.div`
-  ${royal};
+const Content = styled.div`
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
   padding: ${space(4)};
+  align-items: flex-start;
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.18);
+  ${tablet(css`
+    padding: ${space(5)};
+  `)}
+  ${desktop(css`
+    position: static;
+    padding: ${space(5)};
+    width: 50%;
+    height: 100%;
+  `)}
+`;
+
+const Title = styled.div`
+  ${foolscap};
   text-transform: uppercase;
   font-weight: ${weight("bold")};
-  color: ${color("text.dark")};
+  color: ${color("white.light")};
+  margin-bottom: 0;
+  ${tablet(css`
+    color: ${color("primary.dark")};
+  `)}
+`;
+
+const Subtitle = styled.div`
+  ${trafalgar};
+  font-weight: ${weight("thin")};
+  color: ${color("text.main")};
 `;
 
 interface Data {
@@ -184,9 +198,10 @@ const Welcome: React.SFC<Props> = () => {
             </Box>
           </Characters>
           <Content>
-            <Title>{Faker.lorem.words()}</Title>
-            <Button contained variant="white">
-              More
+            <Title>FrontEnd</Title>
+            <Subtitle>Functional Design</Subtitle>
+            <Button contained variant="secondary">
+              Learn More
             </Button>
           </Content>
           <Photo>
