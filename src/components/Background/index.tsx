@@ -11,11 +11,13 @@ import {
 } from "src/components/Icon";
 import { config, useSpring, animated as a } from "react-spring";
 
-interface Props {}
+interface Props {
+  pr: number;
+}
 
 const fg = "divider.light";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ pr: number }>`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -24,7 +26,7 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  padding-right: 15px;
+  padding-right: ${props => props.pr}px;
 `;
 
 const Inner = styled.div`
@@ -70,7 +72,7 @@ const Icon = styled.div<{ top: string; left: string; square?: boolean }>`
   `)}
 `;
 
-const Background: React.SFC<Props> = () => {
+const Background: React.SFC<Props> = ({ pr }) => {
   const [{ st }, set] = useSpring(() => ({ st: 0, config: config.molasses }));
   const onScroll = useCallback(e => {
     set({ st: window.pageYOffset / 2 });
@@ -81,7 +83,7 @@ const Background: React.SFC<Props> = () => {
   }, []);
   const interp = st.interpolate(o => `translate(0,${o + 25}px)`);
   return (
-    <Wrapper>
+    <Wrapper pr={pr}>
       <Container>
         <Inner>
           <Icons style={{ transform: interp }}>

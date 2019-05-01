@@ -6,6 +6,7 @@ import { color, fonts } from "src/theme";
 import Helmet from "react-helmet";
 import { Header } from "src/components/Header";
 import { Background } from "src/components/Background";
+import { useScrollbarWidth } from "src/hooks/useScrollbarWidth";
 
 import { Normalize } from "styled-normalize";
 
@@ -59,6 +60,7 @@ interface Data {
 interface Props {}
 
 export const Layout: React.SFC<Props> = ({ children }) => {
+  const scw = useScrollbarWidth();
   return (
     <StaticQuery
       query={graphql`
@@ -85,8 +87,8 @@ export const Layout: React.SFC<Props> = ({ children }) => {
             <Normalize />
             <GlobalStyle />
             <Content>
-              <Background />
-              <Header />
+              <Background pr={scw} />
+              <Header pr={scw} />
               <Main>{children}</Main>
             </Content>
           </Root>
