@@ -167,14 +167,14 @@ const Welcome: React.SFC<Props> = () => {
       profileHalf: file(relativePath: { eq: "profile-half.png" }) {
         childImageSharp {
           fluid(maxWidth: 960) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
       profile: file(relativePath: { eq: "profile-whole.png" }) {
         childImageSharp {
           fluid(maxWidth: 960) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
