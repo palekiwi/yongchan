@@ -1,13 +1,12 @@
 import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import styled, { css } from "styled-components";
 import { tablet, desktop } from "src/theme/media";
 import { color, space, weight } from "src/theme";
 import { foolscap, trafalgar } from "src/theme/typography";
-import { Image } from "src/components/Image";
 import { Container } from "src/components/Container";
 import { Button } from "src/components/Button";
 import { Yong, Chan } from "src/components/Hanzi";
+import { PhotoWhole, PhotoHalf } from "src/components/Photo";
 
 interface Props {}
 
@@ -57,7 +56,7 @@ const Photo = styled.div`
   `)}
 `;
 
-const PhotoFull = styled(Image)`
+const ProfileWhole = styled(PhotoWhole)`
   display: none;
   ${desktop(css`
     display: block;
@@ -66,7 +65,7 @@ const PhotoFull = styled(Image)`
   `)}
 `;
 
-const PhotoHalf = styled(Image)`
+const ProfileHalf = styled(PhotoHalf)`
   width: auto;
   height: 100%;
   max-height: calc(100vh - 60px);
@@ -156,30 +155,7 @@ const Subtitle = styled.div`
   color: ${color("text.main")};
 `;
 
-interface Data {
-  profileHalf: any;
-  profile: any;
-}
-
 const Welcome: React.SFC<Props> = () => {
-  const data: Data = useStaticQuery(graphql`
-    query WelcomeQuery {
-      profileHalf: file(relativePath: { eq: "profile-half.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 960) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      profile: file(relativePath: { eq: "profile-whole.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 960) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-    }
-  `);
   return (
     <Root>
       <Light />
@@ -205,14 +181,8 @@ const Welcome: React.SFC<Props> = () => {
             </Button>
           </Content>
           <Photo>
-            <PhotoFull
-              imgStyle={{ objectPosition: "100% 0%" }}
-              fluid={data.profile}
-            />
-            <PhotoHalf
-              imgStyle={{ objectFit: "contain", objectPosition: "100% 0%" }}
-              fluid={data.profileHalf}
-            />
+            <ProfileWhole />
+            <ProfileHalf />
           </Photo>
         </Inner>
       </Container>

@@ -17,8 +17,8 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    overflow-y: scroll;
     overflow-x: hidden;
+    overflow-y: scroll;
     height: 100%;
     font-family: ${fonts.sans};
   }

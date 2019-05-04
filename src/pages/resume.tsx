@@ -1,9 +1,10 @@
 import * as React from "react";
+import { ResumePage } from "src/components/Resume";
 
 export interface Props {}
 
-const ResumePage: React.SFC<Props> = () => {
-  return <div>Resume</div>;
+const Resume: React.SFC<Props> = () => {
+  return <ResumePage />;
 };
 
-export default ResumePage;
+export default Resume;
