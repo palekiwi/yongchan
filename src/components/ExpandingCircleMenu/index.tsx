@@ -2,8 +2,10 @@ import * as React from "react";
 import { ExpandingCircle } from "./ExpandingCircle";
 import { NavWrapper } from "./styles";
 import styled from "styled-components";
-import { weight, color, space } from "src/theme";
+import { weight, color } from "src/theme";
 import { trafalgar, paragon } from "src/theme/typography";
+import { Link } from "src/components/Link";
+import { useEscKey } from "src/hooks/useEscKey";
 
 interface Props {
   title?: string;
@@ -21,10 +23,27 @@ const Title = styled.div`
     color: ${color("grey.400")};
   }
 `;
-const Item = styled.div`
+
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`;
+
+const Item = styled(Link)`
   ${paragon};
   text-transform: uppercase;
+  font-weight: ${weight("thin")};
+  color: ${color("text.main")};
+  cursor: pointer;
+  transition: 400ms ease-out;
+  letter-spacing: 1.4px;
+  &:hover {
+    color: ${color("text.dark")};
+  }
 `;
+
+const nav = [{ to: "/", label: "Home" }, { to: "/resume", label: "Resume" }];
 
 export const ExpandingCircleMenu: React.SFC<Props> = ({
   title,
@@ -34,6 +53,7 @@ export const ExpandingCircleMenu: React.SFC<Props> = ({
 }) => {
   const [open, toggle] = React.useState(false);
   const toggleMenu = () => toggle(c => !c);
+  useEscKey(open, toggle);
   return (
     <ExpandingCircle bg={bg} fg={fg} open={open} toggleMenu={toggleMenu}>
       <NavWrapper>
@@ -41,10 +61,17 @@ export const ExpandingCircleMenu: React.SFC<Props> = ({
           <span>Yong</span>
           <span>Chan</span>
         </Title>
-        <Item>Resume</Item>
-        <Item>Projects</Item>
-        <Item>Playground</Item>
-        <Item>About</Item>
+        <Nav>
+          {nav.map(l => (
+            <Item
+              onClick={() => setTimeout(toggleMenu, 200)}
+              key={l.to}
+              to={l.to}
+            >
+              {l.label}
+            </Item>
+          ))}
+        </Nav>
       </NavWrapper>
     </ExpandingCircle>
   );

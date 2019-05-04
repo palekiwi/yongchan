@@ -43,7 +43,8 @@ const Title = styled.div<{ open: boolean }>`
   font-weight: ${weight("bold")};
   text-transform: uppercase;
   & span {
-    transition: 400ms ease-out ${props => (props.open ? 0 : 600)}ms;
+    transition: all 400ms ease-out ${props => (props.open ? 0 : 600)}ms;
+    transition-property: opacity, padding-left, padding-right;
     opacity: ${props => (props.open ? 0 : 1)};
     position: absolute;
   }
