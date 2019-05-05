@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Profile } from "./Profile";
 import { PageHeader } from "src/components/Page";
+import { ResumePhoto } from "./ResumePhoto";
 import { Container } from "src/components/Container";
 import styled, { css } from "styled-components";
 import { color, space } from "src/theme";
 import { tablet } from "src/theme/media";
-import { PhotoWhole } from "src/components/Photo";
 
 interface Props {}
 
@@ -31,20 +31,12 @@ const Photo = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  margin-bottom: ${space(1)};
   ${tablet(css`
+    margin-bottom: 0;
     width: 25%;
     margin-left: 12.5%;
   `)}
-`;
-
-const Pic = styled.div`
-  width: 180px;
-  height: 180px;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 1px solid ${color("divider.main")};
-  margin: 0 auto;
-  background: ${color("grey.100")};
 `;
 
 const ProfileWrapper = styled.div`
@@ -60,9 +52,7 @@ const ResumePage: React.SFC<Props> = ({}) => (
     <Container>
       <Inner>
         <Photo>
-          <Pic>
-            <PhotoWhole />
-          </Pic>
+          <ResumePhoto />
         </Photo>
         <ProfileWrapper>
           <Profile />
