@@ -5,19 +5,24 @@ import { ResumePhoto } from "./ResumePhoto";
 import { Timeline } from "./Timeline";
 import { Container } from "src/components/Container";
 import styled, { css } from "styled-components";
-import { color, space } from "src/theme";
-import { tablet } from "src/theme/media";
+import { color, space, weight } from "src/theme";
+import { tablet, desktop } from "src/theme/media";
 import { experience } from "src/data/experience";
 
 interface Props {}
 
-const Section = styled.div`
+const Page = styled.div`
   padding-bottom: ${space(2)};
   background: linear-gradient(
-    45deg,
-    ${color("divider.light")},
-    ${color("divider.main")}
+    75deg,
+    transparent,
+    ${color("divider.main")},
+    ${color("divider.light")}
   );
+`;
+
+const Section = styled.section`
+  padding-top: ${space(2)};
 `;
 
 const Inner = styled.div`
@@ -48,8 +53,41 @@ const ProfileWrapper = styled.div`
   `)}
 `;
 
+const TimelineWrapper = styled.div`
+  width: 100%;
+  padding: 0 ${space(2)};
+  ${tablet(css`
+    width: 75%;
+    margin-left: 12.5%;
+    padding-left: calc(12.5% - 17px);
+  `)}
+  ${desktop(css`
+    width: 100%;
+    margin-left: 0;
+    transform: translateX(0);
+    padding: 0 ${space(2)};
+  `)}
+`;
+
+const SectionTitle = styled.h3`
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: ${weight("normal")};
+  background: linear-gradient(
+    90deg,
+    transparent,
+    ${color("divider.light")},
+    transparent
+  );
+  color: ${color("text.main")};
+  padding: ${space(3)};
+  margin: ${space(3)} ${space(2)};
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.12);
+`;
+
 const ResumePage: React.SFC<Props> = ({}) => (
-  <Section>
+  <Page>
     <PageHeader title="Resume" />
     <Container>
       <Inner>
@@ -61,10 +99,25 @@ const ResumePage: React.SFC<Props> = ({}) => (
         </ProfileWrapper>
       </Inner>
     </Container>
-    <Container>
-      <Timeline events={experience} />
-    </Container>
-  </Section>
+    <Section>
+      <Container>
+        <SectionTitle>Experience</SectionTitle>
+        <TimelineWrapper>
+          <Timeline events={experience} />
+        </TimelineWrapper>
+      </Container>
+    </Section>
+    <Section>
+      <Container>
+        <SectionTitle>Education</SectionTitle>
+      </Container>
+    </Section>
+    <Section>
+      <Container>
+        <SectionTitle>Skills</SectionTitle>
+      </Container>
+    </Section>
+  </Page>
 );
 
 export { ResumePage };

@@ -2,36 +2,71 @@ import { color, space, radius } from "src/theme";
 import styled, { css } from "styled-components";
 import { phone, desktop } from "src/theme/media";
 
+const lineColor = color("secondary.main");
+
 export const Line = styled.div`
   width: 100%;
-  padding: ${space(3)};
+  padding: ${space(3)} 0;
   position: relative;
   &::before {
     content: "";
-    background: ${color("secondary.main")};
+    background: ${lineColor};
     height: 100%;
     width: 1px;
     position: absolute;
     top: 0;
-    left: 0%;
-    margin-left: 16px;
-    transform: translateX(-50%);
+    left: 0;
+    margin-left: 17px;
     ${desktop(css`
       left: 50%;
       margin-left: 0;
     `)}
   }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 12px;
+    width: 10px;
+    height: 10px;
+    background: ${lineColor};
+    border-radius: 50%;
+    ${desktop(css`
+      left: 50%;
+      margin-left: -5px;
+    `)}
+  }
+`;
+
+export const Dir = styled.div`
+  position: absolute;
+  top: 0;
+  left: 13px;
+  ${desktop(css`
+    left: 50%;
+    transform: translateX(-5px);
+  `)}
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 4px 8px 4px;
+  border-color: transparent transparent ${lineColor} transparent;
 `;
 
 export const Marker = styled.div`
   position: absolute;
-  transform: translateX(-50%);
   top: 14px;
   height: 36px;
   width: 36px;
   border-radius: 50%;
   background: ${color("grey.300")};
-  border: 4px solid ${color("secondary.main")};
+  overflow: hidden;
+  border: 1px solid ${lineColor};
+  padding: 2px;
+  ${desktop(css`
+    transform: translateX(-17px);
+  `)}
 `;
 
 export const WrapperLeft = css`
@@ -62,10 +97,11 @@ export const Wrapper = styled.div<Props>`
   left: 0%;
   width: 100%;
   padding: 0;
-  padding-left: 38px;
+  margin-top: ${props => (props.i === 0 ? 0 : space(3))};
+  padding-left: 58px;
   ${desktop(css<Props>`
-    ${props => (props.i % 2 === 0 ? WrapperRight : WrapperLeft)};
-    margin-top: ${props => (props.i === 0 ? 0 : -60)}px;
+    ${props => (props.i % 2 !== 0 ? WrapperRight : WrapperLeft)};
+    margin-top: ${props => (props.i === 0 ? 0 : -50)}px;
     width: 50%;
   `)}
 `;
@@ -112,12 +148,11 @@ export const EventCard = styled.div<Props>`
   border-radius: ${radius(2)};
   border-bottom: 2px solid ${color("divider.dark")};
   width: 100%;
-  padding: ${space(3)} ${space(4)};
   background: ${color("background.light")};
   ${phone(css<Props>`
     ${leftCard}
   `)}
   ${desktop(css<Props>`
-    ${props => (props.i % 2 === 0 ? leftCard : rightCard)}
+    ${props => (props.i % 2 !== 0 ? leftCard : rightCard)}
   `)}
 `;

@@ -3,7 +3,6 @@ import { Line, Wrapper } from "./timelineStyles";
 import { TimelineEvent, TimelineEventProps } from "./TimelineEvent";
 import { TimelineMarker } from "./TimelineMarker";
 import styled from "styled-components";
-import { space } from "src/theme";
 
 interface TimelineItem {
   node: {
@@ -20,20 +19,18 @@ interface Props {
   events: TimelineEventProps[];
 }
 
-const Events = styled.div`
-  margin: ${space(3)};
-`;
+const Events = styled.div``;
 
 const Timeline: React.SFC<Props> = ({ events }) => (
   <Events>
-    {events.map((event, i) => (
-      <Line key={i}>
-        <Wrapper i={i}>
+    <Line>
+      {events.map((event, i) => (
+        <Wrapper key={i} i={i}>
           <TimelineMarker country={event.country} />
           <TimelineEvent idx={i} event={event} />
         </Wrapper>
-      </Line>
-    ))}
+      ))}
+    </Line>
   </Events>
 );
 

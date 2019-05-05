@@ -14,11 +14,16 @@ const flags = {
 };
 
 const TimelineMarker: React.SFC<Props> = ({ country }) => (
-  <Marker
-    style={{
-      background: `url(${flags[country]})`,
-    }}
-  />
+  <Marker>
+    <div
+      style={{
+        borderRadius: "50%",
+        width: "100%",
+        height: "100%",
+        background: `url(${flags[country]})`,
+      }}
+    />
+  </Marker>
 );
 
 export { TimelineMarker };

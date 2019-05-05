@@ -12,7 +12,7 @@ export const experience: TimelineEventProps[] = [
   {
     date: "2009",
     city: "Taipei",
-    country: "il",
+    country: "tw",
     position: "Boss",
     organization: "McDonald's",
     description: ["be a boss", "do stuff"],
@@ -20,7 +20,7 @@ export const experience: TimelineEventProps[] = [
   {
     date: "2009",
     city: "Taipei",
-    country: "gb",
+    country: "th",
     position: "Boss",
     organization: "McDonald's",
     description: ["be a boss", "do stuff"],
@@ -36,9 +36,17 @@ export const experience: TimelineEventProps[] = [
   {
     date: "2009",
     city: "Taipei",
-    country: "th",
+    country: "il",
     position: "Boss",
     organization: "McDonald's",
     description: ["be a boss", "do stuff"],
+  },
+  {
+    date: "2009",
+    city: "Taipei",
+    country: "gb",
+    position: "Boss",
+    organization: "McDonald's",
+    description: undefined,
   },
 ];
