@@ -3,13 +3,12 @@ import styled, { css } from "styled-components";
 import { phone, desktop } from "src/theme/media";
 
 export const Line = styled.div`
-  background: ${color("grey.200")};
   width: 100%;
   padding: ${space(3)};
   position: relative;
   &::before {
     content: "";
-    background: ${color("grey.500")};
+    background: ${color("secondary.main")};
     height: 100%;
     width: 1px;
     position: absolute;
@@ -27,13 +26,12 @@ export const Line = styled.div`
 export const Marker = styled.div`
   position: absolute;
   transform: translateX(-50%);
-  overflow: hidden;
   top: 14px;
   height: 36px;
   width: 36px;
   border-radius: 50%;
   background: ${color("grey.300")};
-  border: 4px solid ${color("grey.200")};
+  border: 4px solid ${color("secondary.main")};
 `;
 
 export const WrapperLeft = css`
@@ -108,11 +106,11 @@ const rightCard = css`
   ${rightArrow}
 `;
 
-export const ProjectCard = styled.div<Props>`
-  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.14));
+export const EventCard = styled.div<Props>`
   overflow: visible;
   position: relative;
   border-radius: ${radius(2)};
+  border-bottom: 2px solid ${color("divider.dark")};
   width: 100%;
   padding: ${space(3)} ${space(4)};
   background: ${color("background.light")};

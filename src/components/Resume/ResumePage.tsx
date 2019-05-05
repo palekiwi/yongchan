@@ -2,10 +2,12 @@ import * as React from "react";
 import { Profile } from "./Profile";
 import { PageHeader } from "src/components/Page";
 import { ResumePhoto } from "./ResumePhoto";
+import { Timeline } from "./Timeline";
 import { Container } from "src/components/Container";
 import styled, { css } from "styled-components";
 import { color, space } from "src/theme";
 import { tablet } from "src/theme/media";
+import { experience } from "src/data/experience";
 
 interface Props {}
 
@@ -58,6 +60,9 @@ const ResumePage: React.SFC<Props> = ({}) => (
           <Profile />
         </ProfileWrapper>
       </Inner>
+    </Container>
+    <Container>
+      <Timeline events={experience} />
     </Container>
   </Section>
 );
