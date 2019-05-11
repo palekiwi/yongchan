@@ -101,7 +101,7 @@ const ResumePage: React.SFC<Props> = ({}) => (
     </Container>
     <Section>
       <Container>
-        <SectionTitle>Experience</SectionTitle>
+        <SectionTitle>Employment</SectionTitle>
         <TimelineWrapper>
           <Timeline events={experience} />
         </TimelineWrapper>
