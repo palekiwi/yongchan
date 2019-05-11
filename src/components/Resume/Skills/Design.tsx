@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Card } from "src/components/Card";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { weight, color, space } from "src/theme";
+import { tablet, desktop } from "src/theme/media";
 import { longPrimer, greatPrimer } from "src/theme/typography";
-import { HaskellIcon } from "src/components/Icon/HaskellIcon";
-import { ReactIcon } from "src/components/Icon/ReactIcon";
-import { TypescriptIcon } from "src/components/Icon/TypescriptIcon";
-import { NodeIcon } from "src/components/Icon/NodeIcon";
-import { Star } from "styled-icons/material/Star";
+import { PSIcon } from "src/components/Icon/PSIcon";
+import { AIIcon } from "src/components/Icon/AIIcon";
+import { IDIcon } from "src/components/Icon/IDIcon";
+import { BlenderIcon } from "src/components/Icon/BlenderIcon";
 
 interface Props {}
 
@@ -33,6 +33,12 @@ const TechWrapper = styled.div`
   &:last-child {
     margin-bottom: ${space(1)};
   }
+  ${tablet(css`
+    width: 50%;
+  `)}
+  ${desktop(css`
+    width: 100%;
+  `)}
 `;
 
 const Icon = styled.div`
@@ -50,42 +56,40 @@ const Label = styled.div`
   color: ${color("text.dark")};
 `;
 
-const Rating = styled.div`
-  color: ${color("secondary.main")};
+const TechContainer = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const Tech: React.FC<{ icon: any; label: string; level: number }> = props => (
   <TechWrapper>
     <Icon>{props.icon}</Icon>
     <Label>{props.label}</Label>
-    <Rating>
-      {Array(props.level)
-        .fill("")
-        .map(() => (
-          <Star size={24} />
-        ))}
-    </Rating>
   </TechWrapper>
 );
 
 const tech = [
-  { icon: <TypescriptIcon />, label: "Typescript", level: 3 },
-  { icon: <ReactIcon />, label: "React", level: 4 },
-  { icon: <NodeIcon />, label: "Node", level: 2 },
-  { icon: <HaskellIcon />, label: "Haskell", level: 2 },
+  { icon: <PSIcon />, label: "Photoshop" },
+  { icon: <AIIcon />, label: "Illustrator" },
+  { icon: <IDIcon />, label: "InDesign" },
+  { icon: <BlenderIcon />, label: "Blender 3D" },
 ];
 
-const Programming: React.SFC<Props> = () => {
+const Design: React.SFC<Props> = () => {
   return (
     <Card style={{ height: "100%" }}>
       <Inner>
-        <Title>Programming</Title>
-        {tech.map(t => (
-          <Tech key={t.label} icon={t.icon} label={t.label} level={t.level} />
-        ))}
+        <Title>Design</Title>
+        <TechContainer>
+          {tech.map(t => (
+            <Tech key={t.label} icon={t.icon} label={t.label} />
+          ))}
+        </TechContainer>
       </Inner>
     </Card>
   );
 };
 
-export { Programming };
+export { Design };
