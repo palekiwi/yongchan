@@ -46,8 +46,12 @@ const Degree = styled.div`
 `;
 const Org = styled.div``;
 const Desc = styled.div`
+  margin-bottom: ${space(1)};
   p {
-    margin-bottom: ${space(2)};
+    margin-bottom: ${space(3)};
+    &:last-child {
+      margin-bottom: ${space(0)};
+    }
   }
 `;
 

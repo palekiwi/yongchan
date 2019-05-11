@@ -9,9 +9,10 @@ export const experience: TimelineEventProps[] = [
     organization: "Controlnet International",
     description: [
       "overseas business development",
-      "print design",
+      "evangelism of renewable energy",
+      "print and digital design",
       "3D visualization",
-      "web design",
+      "web development",
     ],
   },
   {
