@@ -3,6 +3,7 @@ import { EventCard } from "./timelineStyles";
 import styled from "styled-components";
 import { weight, color, space } from "src/theme";
 import { longPrimer, pica, greatPrimer } from "src/theme/typography";
+import { countries } from "src/data/countries";
 
 export interface TimelineEventProps {
   date: string;
@@ -17,14 +18,6 @@ interface Props {
   event: TimelineEventProps;
   idx: number;
 }
-
-const countries = {
-  tw: "Taiwan",
-  gb: "United Kingdom",
-  il: "State of Israel",
-  th: "Thailand",
-  cn: "China",
-};
 
 const Inner = styled.div`
   padding: ${space(3)} ${space(4)};

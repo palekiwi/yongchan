@@ -1,9 +1,6 @@
 import * as React from "react";
 import { Marker } from "./timelineStyles";
-
-interface Props {
-  country: string;
-}
+import styled from "styled-components";
 
 const flags = {
   tw: require("../../../images/flags/tw.svg"),
@@ -13,16 +10,33 @@ const flags = {
   th: require("../../../images/flags/th.svg"),
 };
 
+interface Props {
+  country: string;
+}
+
+const Flag = styled.div<Props>`
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background: ${props => `url(${flags[props.country]})`};
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.2) 40%,
+      rgba(255, 255, 255, 0.5)
+    );
+  }
+`;
+
 const TimelineMarker: React.SFC<Props> = ({ country }) => (
   <Marker>
-    <div
-      style={{
-        borderRadius: "50%",
-        width: "100%",
-        height: "100%",
-        background: `url(${flags[country]})`,
-      }}
-    />
+    <Flag country={country} />
   </Marker>
 );
 

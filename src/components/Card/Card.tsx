@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { radius, shadow } from "src/theme";
+import { color, radius } from "src/theme";
 
 export const Card = styled.div`
-  overflow: hidden;
-  width: 100%;
+  overflow: visible;
+  position: relative;
   border-radius: ${radius(2)};
-  box-shadow: ${shadow(1)};
+  border-bottom: 2px solid ${color("divider.dark")};
+  width: 100%;
+  background: ${color("background.light")};
 `;

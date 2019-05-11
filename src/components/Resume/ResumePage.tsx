@@ -3,11 +3,13 @@ import { Profile } from "./Profile";
 import { PageHeader } from "src/components/Page";
 import { ResumePhoto } from "./ResumePhoto";
 import { Timeline } from "./Timeline";
+import { Education } from "./Education";
 import { Container } from "src/components/Container";
 import styled, { css } from "styled-components";
 import { color, space, weight } from "src/theme";
 import { tablet, desktop } from "src/theme/media";
 import { experience } from "src/data/experience";
+import { education } from "src/data/education";
 
 interface Props {}
 
@@ -69,6 +71,22 @@ const TimelineWrapper = styled.div`
   `)}
 `;
 
+const EducationWrapper = styled.div`
+  width: 100%;
+  padding: 0 ${space(2)};
+  ${tablet(css`
+    width: 75%;
+    margin-left: 12.5%;
+    padding-left: calc(12.5% - 17px);
+  `)}
+  ${desktop(css`
+    width: 100%;
+    margin-left: 0;
+    transform: translateX(0);
+    padding: 0 ${space(2)};
+  `)}
+`;
+
 const SectionTitle = styled.h3`
   text-align: center;
   text-transform: uppercase;
@@ -110,6 +128,11 @@ const ResumePage: React.SFC<Props> = ({}) => (
     <Section>
       <Container>
         <SectionTitle>Education</SectionTitle>
+        {education.map(item => (
+          <EducationWrapper key={item.date}>
+            <Education item={item} />
+          </EducationWrapper>
+        ))}
       </Container>
     </Section>
     <Section>

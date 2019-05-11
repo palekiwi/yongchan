@@ -1,6 +1,7 @@
 import { color, space, radius } from "src/theme";
 import styled, { css } from "styled-components";
 import { phone, desktop } from "src/theme/media";
+import { Card } from "src/components/Card";
 
 const lineColor = color("secondary.main");
 
@@ -142,13 +143,7 @@ const rightCard = css`
   ${rightArrow}
 `;
 
-export const EventCard = styled.div<Props>`
-  overflow: visible;
-  position: relative;
-  border-radius: ${radius(2)};
-  border-bottom: 2px solid ${color("divider.dark")};
-  width: 100%;
-  background: ${color("background.light")};
+export const EventCard = styled(Card)<Props>`
   ${phone(css<Props>`
     ${leftCard}
   `)}
