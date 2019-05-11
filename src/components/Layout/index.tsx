@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { color, fonts } from "src/theme";
 import Helmet from "react-helmet";
 import { Header } from "src/components/Header";
+import { Footer } from "src/components/Footer";
 import { Background } from "src/components/Background";
 import { useScrollbarWidth } from "src/hooks/useScrollbarWidth";
 
@@ -90,6 +91,7 @@ export const Layout: React.SFC<Props> = ({ children }) => {
               <Background pr={scw} />
               <Header pr={scw} />
               <Main>{children}</Main>
+              <Footer />
             </Content>
           </Root>
         );

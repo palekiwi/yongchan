@@ -15,7 +15,7 @@ import { education } from "src/data/education";
 interface Props {}
 
 const Page = styled.div`
-  padding-bottom: ${space(2)};
+  padding-bottom: ${space(4)};
   background: linear-gradient(
     75deg,
     transparent,
