@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import { color, space, weight } from "src/theme";
-import { pica, greatPrimer } from "src/theme/typography";
+import { longPrimer, pica, greatPrimer } from "src/theme/typography";
 import { Card } from "src/components/Card";
-import { tablet } from "src/theme/media";
+import { desktop } from "src/theme/media";
 import { EducationItem } from "src/data/education";
 import { countries } from "src/data/countries";
 
@@ -15,16 +15,21 @@ const Columns = styled.div`
   padding: ${space(3)} ${space(4)};
   display: flex;
   flex-direction: column;
-  ${tablet(css`
+  ${desktop(css`
     flex-direction: row;
   `)}
 `;
 
 const Column = styled.div`
   width: 100%;
-  ${tablet(css`
+  ${desktop(css`
     width: 50%;
   `)}
+  &:nth-child(2) {
+    ${longPrimer};
+    margin-bottom: 0;
+    color: ${color("text.dark")};
+  }
 `;
 
 const Time = styled.div`
@@ -40,6 +45,11 @@ const Degree = styled.div`
   color: ${color("primary.dark")};
 `;
 const Org = styled.div``;
+const Desc = styled.div`
+  p {
+    margin-bottom: ${space(2)};
+  }
+`;
 
 const Place = styled.div`
   margin-bottom: ${space(2)};
@@ -57,7 +67,13 @@ const Education: React.FC<Props> = ({ item }) => (
           {item.city}, {countries[item.country]}
         </Place>
       </Column>
-      <Column>{item.description}</Column>
+      <Column>
+        <Desc>
+          {item.description.map((par, i) => (
+            <p key={i}>{par}</p>
+          ))}
+        </Desc>
+      </Column>
     </Columns>
   </Card>
 );

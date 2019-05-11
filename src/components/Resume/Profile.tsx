@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { color, radius, space, weight } from "src/theme";
 import { pica } from "src/theme/typography";
 import { tablet } from "src/theme/media";
+import { profile } from "src/data/profile";
 
 const Wrapper = styled.div`
   margin: ${space(2)};
@@ -57,19 +58,11 @@ const Val = styled.div`
 
 interface Props {}
 
-const info = [
-  { k: "Full Name", v: "Pawel Lisewski / 黎勇禪" },
-  { k: "Born", v: "1987/11/05" },
-  { k: "Nationality", v: "Republic of Poland" },
-  { k: "Base", v: "Taiwan, R.O.C." },
-  { k: "Status", v: "Permanent Resident" },
-];
-
 const Profile: React.SFC<Props> = ({}) => {
   return (
     <Wrapper>
       <Info>
-        {info.map(i => (
+        {profile.map(i => (
           <Row key={i.k}>
             <Key>{i.k}</Key>
             <Val>{i.v}</Val>

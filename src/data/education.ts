@@ -4,7 +4,7 @@ export interface EducationItem {
   country: string;
   degree: string;
   organization: string;
-  description: string;
+  description: string[];
 }
 
 export const education: EducationItem[] = [
@@ -14,6 +14,10 @@ export const education: EducationItem[] = [
     country: "pl",
     degree: "B.A. in Corporate Finance",
     organization: "Warsaw School of Economics",
-    description: `Having reached national finals in state `,
+    description: [
+      "I entered Poland's most prestigious business school with the 6th best result countrywide, having reached national finals in two high school olympiads (economics and English) and scored close to 100% in math exams.",
+      "For three years, I volunteered in AIESEC, a global student organization, on projects of national and international scale.",
+      "Eventually, I graduated with a mark of 5.0/5.5 and left for Asia.",
+    ],
   },
 ];
