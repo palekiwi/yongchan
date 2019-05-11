@@ -135,6 +135,14 @@ const ResumePage: React.SFC<Props> = ({}) => (
     </Container>
     <Section>
       <Container>
+        <SectionTitle>Skills</SectionTitle>
+        <SkillsWrapper>
+          <Skills />
+        </SkillsWrapper>
+      </Container>
+    </Section>
+    <Section>
+      <Container>
         <SectionTitle>Employment</SectionTitle>
         <TimelineWrapper>
           <Timeline events={experience} />
@@ -149,14 +157,6 @@ const ResumePage: React.SFC<Props> = ({}) => (
             <Education item={item} />
           </EducationWrapper>
         ))}
-      </Container>
-    </Section>
-    <Section>
-      <Container>
-        <SectionTitle>Skills</SectionTitle>
-        <SkillsWrapper>
-          <Skills />
-        </SkillsWrapper>
       </Container>
     </Section>
   </Page>

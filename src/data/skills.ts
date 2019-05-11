@@ -10,5 +10,5 @@ export const languages = [
   { name: "German", level: 0.8 },
   { name: "Portuguese", level: 0.3 },
   { name: "Indonesian", level: 0.2 },
-  { name: "Tagalog", level: 0.1 },
+  { name: "Tagalog", level: 0.2 },
 ];
