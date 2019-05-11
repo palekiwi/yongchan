@@ -41,13 +41,15 @@ const LevelGauge = styled.div`
   );
   height: 10px;
   overflow: hidden;
-  border-radius: ${radius(2)};
+  border-radius: ${radius(0)};
 `;
 
 const Level = styled(animated.div)`
   background: ${color("grey.100")};
   height: 100%;
   width: 100%;
+  transform: scaleX(1);
+  transform-origin: 100% 50%;
   float: right;
 `;
 
@@ -55,8 +57,8 @@ const Languages: React.SFC<Props> = ({ items }) => {
   const springs = useSprings(
     items.length,
     items.map(item => ({
-      from: { x: 0 },
-      to: { x: item.level },
+      from: { transform: `scaleX(1)` },
+      to: { transform: `scaleX(${1 - item.level})` },
       config: config.slow,
     }))
   );
@@ -64,13 +66,11 @@ const Languages: React.SFC<Props> = ({ items }) => {
     <Card>
       <Inner>
         <Title>Languages</Title>
-        {springs.map(({ x }, i) => (
-          <Lang>
+        {springs.map((props, i) => (
+          <Lang key={items[i].name}>
             <Label>{items[i].name}</Label>
             <LevelGauge>
-              <Level
-                style={{ width: x.interpolate(x => `${(1 - x) * 100}%`) }}
-              />
+              <Level style={props} />
             </LevelGauge>
           </Lang>
         ))}
