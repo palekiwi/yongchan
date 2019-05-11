@@ -122,6 +122,14 @@ const SectionTitle = styled.h3`
 
 const ResumePage: React.SFC<Props> = ({}) => (
   <Page>
+    <Section>
+      <Container>
+        <SectionTitle>Skills</SectionTitle>
+        <SkillsWrapper>
+          <Skills />
+        </SkillsWrapper>
+      </Container>
+    </Section>
     <PageHeader title="Resume" />
     <Container>
       <Inner>
@@ -149,14 +157,6 @@ const ResumePage: React.SFC<Props> = ({}) => (
             <Education item={item} />
           </EducationWrapper>
         ))}
-      </Container>
-    </Section>
-    <Section>
-      <Container>
-        <SectionTitle>Skills</SectionTitle>
-        <SkillsWrapper>
-          <Skills />
-        </SkillsWrapper>
       </Container>
     </Section>
   </Page>

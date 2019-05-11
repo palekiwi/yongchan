@@ -4,6 +4,7 @@ import { Card } from "src/components/Card";
 import styled from "styled-components";
 import { weight, radius, color, space } from "src/theme";
 import { pica, greatPrimer } from "src/theme/typography";
+import { animated, useSprings, config } from "react-spring";
 
 interface Props {
   items: typeof languages;
@@ -43,27 +44,39 @@ const LevelGauge = styled.div`
   border-radius: ${radius(2)};
 `;
 
-const Level = styled.div`
+const Level = styled(animated.div)`
   background: ${color("grey.100")};
   height: 100%;
   width: 100%;
   float: right;
 `;
 
-const Languages: React.SFC<Props> = ({ items }) => (
-  <Card>
-    <Inner>
-      <Title>Languages</Title>
-      {items.map(item => (
-        <Lang>
-          <Label>{item.name}</Label>
-          <LevelGauge>
-            <Level style={{ width: `${(1 - item.level) * 100}%` }} />
-          </LevelGauge>
-        </Lang>
-      ))}
-    </Inner>
-  </Card>
-);
+const Languages: React.SFC<Props> = ({ items }) => {
+  const springs = useSprings(
+    items.length,
+    items.map(item => ({
+      from: { x: 0 },
+      to: { x: item.level },
+      config: config.slow,
+    }))
+  );
+  return (
+    <Card>
+      <Inner>
+        <Title>Languages</Title>
+        {springs.map(({ x }, i) => (
+          <Lang>
+            <Label>{items[i].name}</Label>
+            <LevelGauge>
+              <Level
+                style={{ width: x.interpolate(x => `${(1 - x) * 100}%`) }}
+              />
+            </LevelGauge>
+          </Lang>
+        ))}
+      </Inner>
+    </Card>
+  );
+};
 
 export { Languages };
