@@ -20,7 +20,7 @@ const Wrapper = styled.div<{ pr: number }>`
   z-index: 99;
 `;
 
-const Header: React.SFC<Props> = ({ pr }) => {
+const Header: React.FC<Props> = ({ pr }) => {
   return (
     <Wrapper pr={pr}>
       <ExpandingCircleMenu bg={"white.light"} fg={"primary.main"} />

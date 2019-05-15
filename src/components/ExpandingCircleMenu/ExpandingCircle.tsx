@@ -104,9 +104,9 @@ export const ExpandingCircle: React.SFC<Props> = ({
   fg,
   children,
 }) => {
-  const sor = useRef();
-  const shr = useRef();
-  const tr = useRef();
+  const sor = useRef() as any;
+  const shr = useRef() as any;
+  const tr = useRef() as any;
   const so = useSpring({
     ref: sor,
     opacity: open ? 1 : 0,

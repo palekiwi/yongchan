@@ -10,6 +10,7 @@ module.exports = {
       "<rootDir>/__mocks__/file-mock.js",
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+  moduleDirectories: ["<rootDir>", "node_modules"],
   testPathIgnorePatterns: ["node_modules", ".cache"],
   transformIgnorePatterns: ["node_modules/(?!(gatsby)/)"],
   globals: {
