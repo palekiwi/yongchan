@@ -3,6 +3,8 @@ import { storiesOf } from "@storybook/react";
 //import { action } from "@storybook/addon-actions";
 import { Button } from "./index";
 
-const stories = storiesOf("Components", module);
+const stories = storiesOf("Button", module);
 
-stories.add("Button", () => <Button>text</Button>, { info: { inline: true } });
+stories
+  .add("default", () => <Button>text</Button>)
+  .add("outlined", () => <Button outlined>text</Button>);
