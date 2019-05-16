@@ -51,8 +51,10 @@ const defaultStyle = css<ButtonProps>`
   &:hover {
     background: ${color("divider.light")};
   }
-  &:active {
+  &:active,
+  &:focus {
     outline: none;
+    background: ${color("divider.light")};
   }
   ${props =>
     props.outlined &&
@@ -61,15 +63,12 @@ const defaultStyle = css<ButtonProps>`
       &:hover {
         background: ${color("divider.light")};
       }
-      &:focus {
-        outline: none;
-      }
     `}
   ${props =>
     props.contained &&
     css`
       border-color: transparent;
-      background: ${color("divider.dark")};
+      background: ${color("divider.light")};
       color: ${color("text.dark")};
       &:hover {
         background: ${color("divider.main")};
@@ -80,11 +79,7 @@ const defaultStyle = css<ButtonProps>`
 const primary = css<ButtonProps>`
   color: ${color("primary.main")};
   &:hover {
-    background: ${color("divider.dark")};
     color: ${color("primary.dark")};
-  }
-  &:focus {
-    background: ${color("grey.200")};
   }
   ${props =>
     props.outlined &&
@@ -94,20 +89,18 @@ const primary = css<ButtonProps>`
         background: ${color("primary.main")};
         color: ${color("white.light")};
       }
-      &:focus {
-        outline: none;
-      }
     `}
   ${props =>
     props.contained &&
     css`
       border-color: ${color("primary.main")};
       background: ${color("primary.main")};
-      color: ${color("white.main")};
-      &:hover {
-        background: ${color("primary.light")};
-        color: ${color("white.main")};
-        border-color: ${color("primary.light")};
+      color: ${color("white.light")};
+      &:hover,
+      &:focus {
+        background: ${color("primary.dark")};
+        color: ${color("white.light")};
+        border-color: ${color("primary.dark")};
       }
     `}
 `;
@@ -115,11 +108,7 @@ const primary = css<ButtonProps>`
 const secondary = css<ButtonProps>`
   color: ${color("secondary.main")};
   &:hover {
-    background: ${color("divider.light")};
     color: ${color("secondary.dark")};
-  }
-  &:focus {
-    background: ${color("grey.200")};
   }
   ${props =>
     props.outlined &&
@@ -129,9 +118,6 @@ const secondary = css<ButtonProps>`
         background: ${color("secondary.main")};
         color: ${color("white.light")};
       }
-      &:focus {
-        outline: none;
-      }
     `}
   ${props =>
     props.contained &&
@@ -139,10 +125,11 @@ const secondary = css<ButtonProps>`
       border-color: ${color("secondary.main")};
       background: ${color("secondary.main")};
       color: ${color("white.light")};
-      &:hover {
-        background: ${color("secondary.light")};
-        color: ${color("white.main")};
-        border-color: ${color("secondary.light")};
+      &:hover,
+      &:focus {
+        background: ${color("secondary.dark")};
+        color: ${color("white.light")};
+        border-color: ${color("secondary.dark")};
       }
     `}
 `;
