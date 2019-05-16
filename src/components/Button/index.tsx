@@ -6,7 +6,7 @@ import { Link } from "src/components/Link";
 
 export interface ButtonProps {
   to?: string;
-  variant?: "primary" | "secondary" | "white";
+  variant?: "primary" | "secondary" | "white" | "default";
   contained?: boolean;
   round?: boolean;
   outlined?: boolean;

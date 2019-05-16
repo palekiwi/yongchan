@@ -1,10 +1,43 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-//import { action } from "@storybook/addon-actions";
-import { Button } from "./index";
+import { Button, ButtonProps } from "./index";
+import styled from "styled-components";
 
-const stories = storiesOf("Components/Button", module);
+const stories = storiesOf("Elements/Button", module);
+
+const Container = styled.div`
+  ${Button} {
+    margin-left: 0.5rem;
+  }
+`;
+const variants: any[] = ["default", "primary", "secondary"];
 
 stories
-  .add("default", () => <Button>text</Button>)
-  .add("outlined", () => <Button outlined>text</Button>);
+  .addDecorator(f => <Container>{f()}</Container>)
+  .add("default", () => (
+    <>
+      {variants.map(v => (
+        <Button key={v} variant={v}>
+          {v}
+        </Button>
+      ))}
+    </>
+  ))
+  .add("outlined", () => (
+    <>
+      {variants.map(v => (
+        <Button outlined key={v} variant={v}>
+          {v}
+        </Button>
+      ))}
+    </>
+  ))
+  .add("contained", () => (
+    <>
+      {variants.map(v => (
+        <Button contained key={v} variant={v}>
+          {v}
+        </Button>
+      ))}
+    </>
+  ));
