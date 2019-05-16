@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { Image } from "./index";
 import Faker from "faker";
 
-const stories = storiesOf("Image", module);
+const stories = storiesOf("Elements/Image", module);
 
 const image = { publicUrl: Faker.image.abstract() };
 

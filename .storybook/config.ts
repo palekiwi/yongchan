@@ -1,5 +1,16 @@
 import { configure } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { color } from "../src/theme";
+
+import { addParameters } from "@storybook/react"; // <- or your storybook framework
+
+addParameters({
+  backgrounds: [
+    { name: "main", value: color("background.main"), default: true },
+    { name: "light", value: color("background.light") },
+    { name: "dark", value: color("background.dark") },
+  ],
+});
 
 // automatically import all files ending in *.stories.js
 const req = require.context("../src", true, /.stories.tsx$/);

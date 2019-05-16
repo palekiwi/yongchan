@@ -8,4 +8,5 @@ export const Card = styled.div`
   border-bottom: 2px solid ${color("divider.dark")};
   width: 100%;
   background: ${color("background.light")};
+  overflow: hidden;
 `;
