@@ -7,7 +7,7 @@ interface Props {
 }
 
 const CardImage: React.SFC<Props> = ({ image, height }) => {
-  return <Image style={{ height: height }} fluid={image} />;
+  return <Image style={{ height: height }} image={image} />;
 };
 
 CardImage.defaultProps = {

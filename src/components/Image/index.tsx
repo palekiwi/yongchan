@@ -2,8 +2,13 @@ import * as React from "react";
 import GatsbyImage from "gatsby-image";
 
 interface ImgProps {
-  fixed?: any;
-  fluid?: any;
+  image?: {
+    childImageSharp?: {
+      fixed?: any;
+      fluid?: any;
+    };
+    publicUrl?: string;
+  };
   className?: string;
   style?: object;
   critical?: boolean;
@@ -12,31 +17,35 @@ interface ImgProps {
 }
 
 const Image: React.SFC<ImgProps> = (
-  { fixed, fluid, className, critical, imgStyle, fadeIn, style },
+  { image, className, critical, imgStyle, fadeIn, style },
   ...props
 ) => {
-  if (!(fluid || fixed))
+  const url =
+    !!image && !!image.publicUrl ? image.publicUrl : require("./default.jpg");
+  if (!!image && !!image.childImageSharp) {
+    const { fluid, fixed } = image.childImageSharp;
     return (
-      <div
-        style={{
-          background: `url(${require("./default.jpg")})`,
-          backgroundSize: "cover",
-          backgroundPosition: "50% 50%",
-          ...style,
-        }}
+      <GatsbyImage
+        style={style}
+        critical={critical}
+        fadeIn={fadeIn}
+        fluid={!!fluid && fluid}
+        fixed={!!fixed && fixed}
         className={className}
+        imgStyle={imgStyle}
+        {...props}
       />
     );
+  }
   return (
-    <GatsbyImage
-      style={style}
-      critical={critical}
-      fadeIn={fadeIn}
-      fluid={fluid && fluid.childImageSharp.fluid}
-      fixed={fixed && fixed.childImageSharp.fixed}
+    <div
+      style={{
+        background: `url(${url})`,
+        backgroundSize: "cover",
+        backgroundPosition: "50% 50%",
+        ...style,
+      }}
       className={className}
-      imgStyle={imgStyle}
-      {...props}
     />
   );
 };

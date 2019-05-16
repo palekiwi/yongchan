@@ -22,7 +22,7 @@ const PhotoHalf: React.SFC<Props> = ({ className }) => {
     <Image
       className={className}
       imgStyle={{ objectFit: "contain", objectPosition: "100% 0%" }}
-      fluid={img}
+      image={img}
     />
   );
 };

@@ -22,7 +22,7 @@ const PhotoWhole: React.SFC<Props> = ({ className }) => {
     <Image
       className={className}
       imgStyle={{ objectPosition: "100% 0%" }}
-      fluid={img}
+      image={img}
     />
   );
 };
