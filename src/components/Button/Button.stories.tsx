@@ -40,4 +40,22 @@ stories
         </Button>
       ))}
     </>
+  ))
+  .add("small", () => (
+    <>
+      {variants.map(v => (
+        <Button small contained key={v} variant={v}>
+          {v}
+        </Button>
+      ))}
+    </>
+  ))
+  .add("large", () => (
+    <>
+      {variants.map(v => (
+        <Button large contained key={v} variant={v}>
+          {v}
+        </Button>
+      ))}
+    </>
   ));

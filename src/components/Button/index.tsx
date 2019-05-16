@@ -8,7 +8,6 @@ export interface ButtonProps {
   to?: string;
   variant?: "primary" | "secondary" | "white" | "default";
   contained?: boolean;
-  round?: boolean;
   outlined?: boolean;
   small?: boolean;
   large?: boolean;
@@ -171,31 +170,23 @@ const white = css<ButtonProps>`
 
 const small = css<ButtonProps>`
   ${brevier};
-  padding: $space(1)} $space(2)};
   margin: 0;
+  padding: ${space(1)} ${space(2)};
 `;
 
 const large = css<ButtonProps>`
   ${greatPrimer};
   margin: 0;
-`;
-
-const round = css<ButtonProps>`
-  padding: 0;
-  text-align: center;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  padding: ${space(3)} ${space(4)};
 `;
 
 const Button = styled(ButtonLink)<ButtonProps>`
-  ${defaultStyle}
-  ${props => props.small && small}
-  ${props => props.large && large}
-  ${props => props.round && round}
-  ${props => props.variant === "primary" && primary}
-  ${props => props.variant === "secondary" && secondary}
-  ${props => props.variant === "white" && white}
+  ${defaultStyle};
+  ${props => props.small && small};
+  ${props => props.large && large};
+  ${props => props.variant === "primary" && primary};
+  ${props => props.variant === "secondary" && secondary};
+  ${props => props.variant === "white" && white};
 `;
 
 export { Button };
