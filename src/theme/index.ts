@@ -43,6 +43,8 @@ export const size = (n: number) => fontSizes[n];
 export const radius = (n: number) => radii[n];
 export const weight = (s: "thin" | "normal" | "bold") => fontWeights[s];
 
+export const transition = "400ms cubic-bezier(0.08, 0.52, 0.52, 1)";
+
 const f = {
   color,
 };

@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { radius, space, color } from "src/theme";
+import { transition, radius, space, color } from "src/theme";
 import { longPrimer, brevier, greatPrimer } from "src/theme/typography";
 import { Link } from "src/components/Link";
 
@@ -22,7 +22,6 @@ const ButtonLink: React.SFC<ButtonProps> = ({
   outlined,
   small,
   large,
-  round,
   variant,
   activeClassName,
   ...props
@@ -45,7 +44,7 @@ const defaultStyle = css<ButtonProps>`
   color: inherit;
   -webkit-tap-highlight-color: transparent;
   text-align: center;
-  transition: all 400ms cubic-bezier(0.08, 0.52, 0.52, 1);
+  transition: all ${transition};
   padding: ${space(2)} ${space(3)};
   &:hover {
     background: ${color("divider.light")};

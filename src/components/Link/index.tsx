@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link as GatsbyLink } from "gatsby";
 import styled, { css } from "styled-components";
-import { color, weight } from "src/theme";
+import { color, weight, transition } from "src/theme";
 
 export interface BaseLinkProps {
   to: string;
@@ -44,9 +44,10 @@ export const Link = styled(({ styled, ...props }) => <BaseLink {...props} />)<
     props.styled &&
     css`
       font-weight: ${weight("bold")};
-      color: ${color("text.dark")};
+      color: ${color("primary.dark")};
+      transition: color ${transition};
       &:hover {
-        color: ${color("text.light")};
+        color: ${color("primary.main")};
       }
     `};
 `;

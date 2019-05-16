@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { ExpandingCircleMenu } from "./index";
 import styled from "styled-components";
 
-const stories = storiesOf("ExpandingCircleMenu", module);
+const stories = storiesOf("Components/ExpandingCircleMenu", module);
 
 const Container = styled.div`
   background: #fff;
