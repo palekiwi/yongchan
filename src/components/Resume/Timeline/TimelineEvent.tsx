@@ -47,6 +47,7 @@ const Desc = styled.ul`
   ${longPrimer};
   color: ${color("text.main")};
   margin-bottom: 0;
+  padding-left: ${space(1)};
   li {
     margin-left: ${space(3)};
     list-style-type: circle;

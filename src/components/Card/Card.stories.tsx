@@ -4,7 +4,7 @@ import { Card, CardTitle, CardSubtitle, CardImage, CardContent } from "./index";
 import Faker from "faker";
 
 const image = { publicUrl: Faker.image.abstract() };
-const stories = storiesOf("Components/Card", module);
+const stories = storiesOf("Components|Card", module);
 
 stories.add("with an image", () => (
   <div style={{ padding: "3rem" }}>

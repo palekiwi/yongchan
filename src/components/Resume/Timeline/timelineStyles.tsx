@@ -1,4 +1,4 @@
-import { color, space, radius } from "src/theme";
+import { color, space } from "src/theme";
 import styled, { css } from "styled-components";
 import { phone, desktop } from "src/theme/media";
 import { Card } from "src/components/Card";
@@ -144,6 +144,7 @@ const rightCard = css`
 `;
 
 export const EventCard = styled(Card)<Props>`
+  overflow: visible;
   ${phone(css<Props>`
     ${leftCard}
   `)}

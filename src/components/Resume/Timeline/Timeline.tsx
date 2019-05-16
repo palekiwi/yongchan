@@ -4,22 +4,18 @@ import { TimelineEvent, TimelineEventProps } from "./TimelineEvent";
 import { TimelineMarker } from "./TimelineMarker";
 import styled from "styled-components";
 
-interface TimelineItem {
-  node: {
-    frontmatter: {
-      date: React.ReactNode;
-      title: React.ReactNode;
-      customer: React.ReactNode;
-      location: React.ReactNode;
-    };
-  };
-}
-
 interface Props {
   events: TimelineEventProps[];
 }
 
-const Events = styled.div``;
+const Events = styled.div`
+  box-sizing: border-box;
+  & * {
+    box-sizing: border-box;
+  }
+  position: relative;
+  width: 100%;
+`;
 
 const Timeline: React.SFC<Props> = ({ events }) => (
   <Events>
@@ -34,4 +30,4 @@ const Timeline: React.SFC<Props> = ({ events }) => (
   </Events>
 );
 
-export { Timeline, TimelineItem };
+export { Timeline };

@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { Button } from "./index";
 import styled from "styled-components";
 
-const stories = storiesOf("Elements/Button", module);
+const stories = storiesOf("Elements|Button", module);
 
 const Container = styled.div`
   ${Button} {
