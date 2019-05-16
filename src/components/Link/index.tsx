@@ -39,6 +39,7 @@ interface Props {
 export const Link = styled(({ styled, ...props }) => <BaseLink {...props} />)<
   Props
 >`
+  text-decoration: none;
   ${props =>
     props.styled &&
     css`

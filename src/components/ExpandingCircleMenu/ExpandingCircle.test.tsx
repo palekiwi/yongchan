@@ -9,6 +9,8 @@ it("renders correctly", () => {
     bg: "primary.main",
     fg: "primary.dark",
   };
-  const { asFragment } = render(<ExpandingCircle {...props} />);
+  const { asFragment } = render(
+    <ExpandingCircle {...props} title={["A", "B"]} />
+  );
   expect(asFragment).toMatchSnapshot();
 });

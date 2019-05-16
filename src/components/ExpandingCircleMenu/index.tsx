@@ -8,10 +8,10 @@ import { Link } from "src/components/Link";
 import { useEscKey } from "src/hooks/useEscKey";
 
 interface Props {
-  title?: string;
-  navItems?: { label: React.ReactNode; to: string }[];
-  bg: string;
-  fg: string;
+  title: [string, string];
+  navItems: { label: React.ReactNode; to: string }[];
+  bg?: string;
+  fg?: string;
 }
 
 const Title = styled.div`
@@ -43,8 +43,6 @@ const Item = styled(Link)`
   }
 `;
 
-const nav = [{ to: "/", label: "Home" }, { to: "/resume", label: "Resume" }];
-
 export const ExpandingCircleMenu: React.SFC<Props> = ({
   title,
   navItems,
@@ -55,14 +53,20 @@ export const ExpandingCircleMenu: React.SFC<Props> = ({
   const toggleMenu = () => toggle(c => !c);
   useEscKey(open, toggle);
   return (
-    <ExpandingCircle bg={bg} fg={fg} open={open} toggleMenu={toggleMenu}>
+    <ExpandingCircle
+      title={title}
+      bg={bg || "white.light"}
+      fg={fg || "grey.400"}
+      open={open}
+      toggleMenu={toggleMenu}
+    >
       <NavWrapper>
         <Title>
-          <span>Yong</span>
-          <span>Chan</span>
+          <span>{title[0]}</span>
+          <span>{title[1]}</span>
         </Title>
         <Nav>
-          {nav.map(l => (
+          {navItems.map(l => (
             <Item
               onClick={() => setTimeout(toggleMenu, 200)}
               key={l.to}

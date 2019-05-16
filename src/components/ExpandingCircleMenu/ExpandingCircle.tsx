@@ -95,6 +95,7 @@ interface Props {
   toggleMenu(): void;
   bg: string;
   fg: string;
+  title: [string, string];
 }
 
 export const ExpandingCircle: React.SFC<Props> = ({
@@ -103,6 +104,7 @@ export const ExpandingCircle: React.SFC<Props> = ({
   bg,
   fg,
   children,
+  title,
 }) => {
   const sor = useRef() as any;
   const shr = useRef() as any;
@@ -130,8 +132,8 @@ export const ExpandingCircle: React.SFC<Props> = ({
   return (
     <Wrapper>
       <Title open={open} onClick={toggleMenu}>
-        <span>Yong</span>
-        <span>Chan</span>
+        <span>{title[0]}</span>
+        <span>{title[1]}</span>
       </Title>
       <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
       <ShapeOverlay bg={fg} style={so} />

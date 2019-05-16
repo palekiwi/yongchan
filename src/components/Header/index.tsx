@@ -7,6 +7,8 @@ interface Props {
   pr: number;
 }
 
+const nav = [{ to: "/", label: "Home" }, { to: "/resume", label: "Resume" }];
+
 const Wrapper = styled.div<{ pr: number }>`
   background: ${color("white.light")};
   border-bottom: 1px solid ${color("divider.light")};
@@ -23,7 +25,12 @@ const Wrapper = styled.div<{ pr: number }>`
 const Header: React.FC<Props> = ({ pr }) => {
   return (
     <Wrapper pr={pr}>
-      <ExpandingCircleMenu bg={"white.light"} fg={"primary.main"} />
+      <ExpandingCircleMenu
+        title={["Yong", "Chan"]}
+        navItems={nav}
+        bg={"white.light"}
+        fg={"primary.main"}
+      />
     </Wrapper>
   );
 };
