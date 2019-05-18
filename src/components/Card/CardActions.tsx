@@ -3,5 +3,5 @@ import { color, space } from "src/theme";
 
 export const CardActions = styled.div`
   border-top: 1px solid ${color("divider.light")};
-  padding: ${space(3)};
+  padding: ${space(2)};
 `;

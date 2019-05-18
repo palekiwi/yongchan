@@ -6,9 +6,16 @@ import Faker from "faker";
 const stories = storiesOf("Components/Project/ProjectCard", module);
 
 const project: ProjectCardProps["project"] = {
-  title: Faker.commerce.productName(),
-  image: { publicUrl: Faker.image.abstract() },
-  tags: [Faker.commerce.productAdjective()],
+  frontmatter: {
+    title: Faker.commerce.productName(),
+    image: { publicUrl: Faker.image.abstract() },
+    tags: [
+      Faker.commerce.productAdjective(),
+      Faker.commerce.productAdjective(),
+    ],
+    date: Faker.date.past().toString(),
+    slug: "/",
+  },
 };
 
 stories.add("default", () => <ProjectCard project={project} />);

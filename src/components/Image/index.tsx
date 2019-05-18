@@ -29,8 +29,8 @@ const Image: React.SFC<ImgProps> = (
         style={style}
         critical={critical}
         fadeIn={fadeIn}
-        fluid={!!fluid && fluid}
-        fixed={!!fixed && fixed}
+        fluid={fluid}
+        fixed={fixed}
         className={className}
         imgStyle={imgStyle}
         {...props}

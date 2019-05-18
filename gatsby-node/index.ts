@@ -1,4 +1,4 @@
-//export { createPages } from "./createPages";
+export { createPages } from "./createPages";
 //export { onCreatePage } from "./onCreatePage";
-//export { onCreateNode } from "./onCreateNode";
+export { onCreateNode } from "./onCreateNode";
 //export { sourceNodes } from "./sourceNodes";

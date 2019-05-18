@@ -11,12 +11,13 @@ export const CardContent = styled.div`
 export const CardTitle = styled.h2`
   ${doublePica};
   font-weight: ${weight("bold")};
-  margin-bottom: ${space(2)};
+  margin-bottom: 0;
   color: ${color("text.dark")};
 `;
 
 export const CardSubtitle = styled.div`
   ${pica};
-  margin: 0;
+  margin-bottom: 0;
+  margin-top: ${space(2)};
   color: ${color("text.dark")};
 `;

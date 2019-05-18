@@ -46,6 +46,13 @@ module.exports = {
         name: "images",
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/data/projects/`,
+        name: "projects",
+      },
+    },
     "gatsby-plugin-root-import",
     "gatsby-plugin-styled-components",
     "gatsby-transformer-sharp",
