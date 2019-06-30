@@ -16,6 +16,9 @@ import { Project } from "../Project.d";
 
 const Wrapper = styled(Card)`
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ImageWrapper = styled(Link)`
@@ -67,7 +70,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         ))}
       </Tags>
     </ImageWrapper>
-    <CardContent>
+    <CardContent style={{ flexGrow: 1 }}>
       <CardTitle>{frontmatter.title}</CardTitle>
       <When>{monthYear(frontmatter.date)}</When>
     </CardContent>

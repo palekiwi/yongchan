@@ -4,7 +4,7 @@ import { ProjectCard } from "./ProjectCard";
 import { Container } from "src/components/Container";
 import styled, { css } from "styled-components";
 import { tablet } from "src/theme/media";
-import { space } from "src/theme";
+import { color, space } from "src/theme";
 
 interface Props {
   projects: { node: Project }[];
@@ -12,6 +12,12 @@ interface Props {
 
 const Wrapper = styled.section`
   padding: ${space(3)} 0;
+  background-color: ${color("divider.main")};
+`;
+
+const Title = styled.h2`
+  color: green;
+  text-align: center;
 `;
 
 const Tiles = styled.div`
@@ -30,6 +36,7 @@ const Tile = styled.div`
 const ProjectsList: React.FC<Props> = ({ projects }) => (
   <Wrapper>
     <Container>
+      <Title>Projects</Title>
       <Tiles>
         {projects.map(({ node }) => (
           <Tile key={node.fields.slug}>
