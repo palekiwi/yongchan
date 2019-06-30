@@ -4,20 +4,23 @@ import { ProjectCard } from "./ProjectCard";
 import { Container } from "src/components/Container";
 import styled, { css } from "styled-components";
 import { tablet } from "src/theme/media";
-import { color, space } from "src/theme";
+import { color, space, weight } from "src/theme";
+import { canon } from "src/theme/typography";
 
 interface Props {
   projects: { node: Project }[];
 }
 
 const Wrapper = styled.section`
-  padding: ${space(3)} 0;
-  background-color: ${color("divider.main")};
+  padding: ${space(4)} 0;
 `;
 
 const Title = styled.h2`
-  color: green;
+  ${canon};
   text-align: center;
+  text-transform: uppercase;
+  font-weight: ${weight("thin")};
+  color: ${color("primary.dark")};
 `;
 
 const Tiles = styled.div`
@@ -25,6 +28,7 @@ const Tiles = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
 const Tile = styled.div`
   padding: ${space(3)};
   width: 100%;
