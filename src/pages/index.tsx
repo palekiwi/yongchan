@@ -15,7 +15,7 @@ export interface Props {
 const IndexPage: React.SFC<Props> = ({ data }) => {
   return (
     <>
-      <SEO title="chuj" />
+      <SEO title="Welcome" />
       <Welcome />
       <ProjectsList projects={data.projects.edges} />
     </>

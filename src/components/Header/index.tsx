@@ -7,7 +7,12 @@ interface Props {
   pr: number;
 }
 
-const nav = [{ to: "/", label: "Home" }, { to: "/resume", label: "Resume" }];
+const nav = [
+  { to: "/", label: "Home" },
+  { to: "/resume", label: "Resume" },
+  { to: "/projects", label: "Projects" },
+  { to: "/contact", label: "Contact" },
+];
 
 const Wrapper = styled.div<{ pr: number }>`
   background: ${color("white.light")};

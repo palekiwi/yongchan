@@ -176,8 +176,8 @@ const Welcome: React.SFC<Props> = () => {
           <Content>
             <Title>FrontEnd</Title>
             <Subtitle>Functional Design</Subtitle>
-            <Button contained variant="secondary">
-              Learn More
+            <Button to="/resume" contained variant="secondary">
+              View Resume
             </Button>
           </Content>
           <Photo>
