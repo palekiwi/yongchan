@@ -174,8 +174,8 @@ const Welcome: React.SFC<Props> = () => {
             </Box>
           </Characters>
           <Content>
-            <Title>FrontEnd</Title>
-            <Subtitle>Functional Design</Subtitle>
+            <Title>Li Yong Chan</Title>
+            <Subtitle>Functional Programmer</Subtitle>
             <Button to="/resume" contained variant="secondary">
               View Resume
             </Button>
