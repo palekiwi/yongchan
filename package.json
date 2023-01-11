@@ -22,7 +22,7 @@
     "gatsby-remark-images": "^3.0.11",
     "gatsby-remark-relative-images-v2": "^0.1.5",
     "gatsby-source-filesystem": "^2.0.32",
-    "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.1.18",
     "intersection-observer": "^0.5.1",
     "object-fit-images": "^3.2.4",
